@@ -56,14 +56,14 @@
   }
   .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 800; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 8px; }
   .nav-logo span { color: var(--gold); }
-  .nav-links { display: flex; gap: 24px; list-style: none; align-items: center; }
-  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
+  .nav-links { display: flex; gap: 20px; list-style: none; align-items: center; flex-wrap: wrap; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.2s; }
   .nav-links a:hover { color: var(--gold); }
 
   /* ── HERO BANNER ── */
   .hero {
     position: relative; padding: 80px 20px 60px; text-align: center;
-    background: linear-gradient(to bottom, rgba(14,22,36,0.8), varbg),
+    background: linear-gradient(to bottom, rgba(14,22,36,0.8), var(--bg)),
                 radial-gradient(circle at 50% 20%, rgba(212,175,55,0.08), transparent 60%);
     border-bottom: 1px solid var(--border);
   }
@@ -92,12 +92,51 @@
   .portal-card {
     background: var(--surface); border: 1px solid var(--border);
     border-radius: 16px; padding: 24px; transition: all 0.25s ease;
-    cursor: pointer; position: relative; overflow: hidden;
+    cursor: pointer; position: relative; overflow: hidden; text-decoration: none; display: block;
   }
   .portal-card:hover { transform: translateY(-4px); border-color: var(--gold); box-shadow: 0 10px 30px rgba(212,175,55,0.1); }
   .portal-icon { font-size: 2rem; margin-bottom: 14px; display: block; }
   .portal-card h3 { font-family: 'Playfair Display', serif; font-size: 1.25rem; margin-bottom: 8px; color: #fff; }
   .portal-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.5; }
+
+  /* ── TRAVEL HUBS SECTION (HOTELS, CARS, AIRLINES & FLIGHTS) ── */
+  .travel-hub-section { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 32px; margin-bottom: 50px; }
+  .travel-tabs { display: flex; gap: 10px; margin-bottom: 24px; flex-wrap: wrap; border-bottom: 1px solid var(--border); padding-bottom: 16px; }
+  .travel-tab-btn {
+    background: var(--surface2); border: 1px solid var(--border); color: var(--text);
+    padding: 10px 20px; border-radius: 10px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.2s;
+  }
+  .travel-tab-btn:hover, .travel-tab-btn.active { background: var(--gold); color: #070b12; border-color: var(--gold); }
+
+  .travel-panel { display: none; }
+  .travel-panel.active { display: block; }
+
+  .travel-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+  .travel-item-card {
+    background: var(--surface2); border: 1px solid var(--border); border-radius: 12px; padding: 20px;
+    display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s, border-color 0.2s;
+  }
+  .travel-item-card:hover { transform: translateY(-2px); border-color: var(--gold); }
+  .travel-item-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 6px; }
+  .travel-item-desc { font-size: 0.82rem; color: var(--muted); margin-bottom: 14px; line-height: 1.4; }
+  .travel-link-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    background: rgba(212,175,55,0.1); border: 1px solid var(--border); color: var(--gold);
+    padding: 8px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; text-decoration: none; transition: all 0.2s;
+  }
+  .travel-link-btn:hover { background: var(--gold); color: #070b12; }
+
+  /* Flight Board Table */
+  .flight-controls { display: flex; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; align-items: center; }
+  .flight-select { background: var(--surface2); border: 1px solid var(--border); color: var(--text); padding: 8px 14px; border-radius: 8px; font-size: 0.85rem; }
+  .flight-table-wrapper { overflow-x: auto; max-height: 420px; border-radius: 10px; border: 1px solid var(--border); }
+  .flight-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.82rem; }
+  .flight-table th, .flight-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  .flight-table th { background: var(--surface2); color: var(--gold); font-weight: 700; position: sticky; top: 0; }
+  .status-badge { display: inline-block; padding: 3px 8px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; }
+  .status-ontime { background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16,185,129,0.3); }
+  .status-delayed { background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.3); }
+  .status-boarding { background: rgba(59, 130, 246, 0.15); color: #3b82f6; border: 1px solid rgba(59,130,246,0.3); }
 
   /* ── INTERACTIVE MAP SECTION ── */
   .map-dashboard {
@@ -205,6 +244,7 @@
     <a href="#" class="nav-logo">🏛️ Key<span>To</span>DC.com</a>
     <ul class="nav-links">
       <li><a href="#hub">Hubs</a></li>
+      <li><a href="#travelHub">Travel & Flights</a></li>
       <li><a href="#mapSection">Explore Map</a></li>
       <li><a href="#directory">Business Directory A-Z</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -215,7 +255,7 @@
   <header class="hero">
     <div class="hero-badge">✦ The Ultimate Washington, D.C. Super-Portal ✦</div>
     <h1>Your Key to Washington, D.C.</h1>
-    <p>The definitive gateway connecting you to world-class real estate, power politics, breaking news, elite dining, historic monuments, and everything the capital has to offer.</p>
+    <p>The definitive gateway connecting you to world-class real estate, power politics, breaking news, elite dining, historic monuments, and comprehensive capital travel resources.</p>
   </header>
 
   <div class="container" id="hub">
@@ -223,11 +263,11 @@
     <!-- PORTAL COMMAND GRID -->
     <h2 class="section-title"><span>01.</span> Core Capital Hubs</h2>
     <div class="portal-grid">
-      <div class="portal-card" onclick="alert('Navigating to Politics & Breaking News Hub...')">
-        <span class="portal-icon">📜</span>
-        <h3>Politics & News</h3>
-        <p>Capitol Hill updates, federal agency policy tracking, municipal legislation, and breaking local news.</p>
-      </div>
+      <a href="#travelHub" class="portal-card">
+        <span class="portal-icon">✈️</span>
+        <h3>Travel & Flight Boards</h3>
+        <p>Comprehensive hotel directories, rental car agencies, airline links, and live arrival/departure status boards.</p>
+      </a>
       <div class="portal-card" onclick="alert('Navigating to Real Estate & Neighborhoods...')">
         <span class="portal-icon">🏡</span>
         <h3>Real Estate</h3>
@@ -255,8 +295,73 @@
       </div>
     </div>
 
+    <!-- TRAVEL DIRECTORY & LIVE FLIGHT BOARDS -->
+    <div class="travel-hub-section" id="travelHub">
+      <h2 class="section-title" style="margin-top:0;"><span>02.</span> Comprehensive Travel & Airline Directory</h2>
+      <p style="color:var(--muted);font-size:0.9rem;margin-bottom:20px;">Explore official hotel groups, rental car fleets, global airline websites, and live flight arrival/departure boards for D.C. area airports (IAD, DCA).</p>
+      
+      <div class="travel-tabs">
+        <button class="travel-tab-btn active" onclick="switchTravelTab('hotels')">🏨 Hotel Directory</button>
+        <button class="travel-tab-btn" onclick="switchTravelTab('cars')">🚗 Rental Car Directory</button>
+        <button class="travel-tab-btn" onclick="switchTravelTab('airlines')">✈️ Airline Directory</button>
+        <button class="travel-tab-btn" onclick="switchTravelTab('flights')">🕒 Live Flight Status Board</button>
+      </div>
+
+      <!-- Hotels Panel -->
+      <div id="panel-hotels" class="travel-panel active">
+        <div class="travel-grid" id="hotelGrid"></div>
+      </div>
+
+      <!-- Rental Cars Panel -->
+      <div id="panel-cars" class="travel-panel">
+        <div class="travel-grid" id="carGrid"></div>
+      </div>
+
+      <!-- Airlines Panel -->
+      <div id="panel-airlines" class="travel-panel">
+        <div class="travel-grid" id="airlineGrid"></div>
+      </div>
+
+      <!-- Live Flight Status Board Panel -->
+      <div id="panel-flights" class="travel-panel">
+        <div class="flight-controls">
+          <div>
+            <label style="font-size:0.8rem;color:var(--muted);margin-right:8px;">Airport:</label>
+            <select id="airportFilter" class="flight-select" onchange="renderFlightBoard()">
+              <option value="IAD">Washington Dulles (IAD)</option>
+              <option value="DCA">Ronald Reagan National (DCA)</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size:0.8rem;color:var(--muted);margin-right:8px;">Board Type:</label>
+            <select id="boardTypeFilter" class="flight-select" onchange="renderFlightBoard()">
+              <option value="arrivals">Arrivals</option>
+              <option value="departures">Departures</option>
+            </select>
+          </div>
+        </div>
+        <div class="flight-table-wrapper">
+          <table class="flight-table">
+            <thead>
+              <tr>
+                <th>Flight #</th>
+                <th>Airline</th>
+                <th id="originDestHeader">Origin</th>
+                <th>Scheduled Time</th>
+                <th>Gate</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="flightTableBody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
     <!-- INTERACTIVE MAP & EXPLORER -->
-    <h2 class="section-title" id="mapSection"><span>02.</span> Interactive D.C. Command Map</h2>
+    <h2 class="section-title" id="mapSection"><span>03.</span> Interactive D.C. Command Map</h2>
     <div class="map-dashboard">
       <div id="map"></div>
       <div class="map-sidebar">
@@ -273,7 +378,7 @@
 
     <!-- A-Z VISUAL BUSINESS DIRECTORY -->
     <div class="classifieds-section" id="directory">
-      <h2 class="section-title" style="margin-top:0;"><span>03.</span> A–Z Visual Business Directory</h2>
+      <h2 class="section-title" style="margin-top:0;"><span>04.</span> A–Z Visual Business Directory</h2>
       <p style="color:var(--muted);font-size:0.9rem;margin-bottom:20px;">Explore top-rated D.C. businesses complete with direct website links, contact numbers, and graphics.</p>
       
       <div class="az-filter" id="azFilter"></div>
@@ -386,6 +491,144 @@
     setInterval(rotateTraffic, 7500);
   }
   initTickers();
+
+  // ── TRAVEL DIRECTORY DATA (HOTELS, CARS, AIRLINES) ──
+  const hotelData = [
+    { name: "Marriott Hotels & Resorts", desc: "Global hospitality leader with premier downtown D.C. and suburban properties.", link: "https://www.marriott.com" },
+    { name: "Hilton Hotels & Resorts", desc: "Iconic luxury and full-service business hotels across the capital region.", link: "https://www.hilton.com" },
+    { name: "Hyatt Hotels Corporation", desc: "Modern upscale accommodations located near major transit hubs and government centers.", link: "https://www.hyatt.com" },
+    { name: "IHG Hotels & Resorts (InterContinental)", desc: "World-renowned luxury stays including InterContinental and Kimpton hotels.", link: "https://www.ihg.com" },
+    { name: "Accor Hotels", desc: "Exceptional lifestyle and luxury hospitality brands across D.C.", link: "https://group.accor.com" },
+    { name: "Wyndham Hotels & Resorts", desc: "Comfortable and accessible lodging throughout the metropolitan area.", link: "https://www.wyndhamhotels.com" }
+  ];
+
+  const carData = [
+    { name: "Hertz Rent-a-Car", desc: "Convenient airport pickup at IAD, DCA, and downtown D.C. locations.", link: "https://www.hertz.com" },
+    { name: "Enterprise Rent-A-Car", desc: "Trusted vehicle selection with neighborhood and airport branches.", link: "https://www.enterprise.com" },
+    { name: "Avis Car Rental", desc: "Priority rental service with wide vehicle variety and GPS options.", link: "https://www.avis.com" },
+    { name: "Budget Rent a Car", desc: "Economical fleet choices for business travel and family excursions.", link: "https://www.budget.com" },
+    { name: "National Car Rental", desc: "Streamlined Emerald Aisle service for frequent business flyers.", link: "https://www.nationalcar.com" },
+    { name: "Alamo Rent A Car", desc: "Affordable vacation and commuter rental packages.", link: "https://www.alamo.com" }
+  ];
+
+  const airlineData = [
+    { name: "American Airlines", desc: "Major hub carrier at Ronald Reagan Washington National Airport (DCA).", link: "https://www.aa.com" },
+    { name: "United Airlines", desc: "Major international hub carrier operating out of Washington Dulles (IAD).", link: "https://www.united.com" },
+    { name: "Delta Air Lines", desc: "Extensive domestic and global connections across D.C. airports.", link: "https://www.delta.com" },
+    { name: "Southwest Airlines", desc: "Frequent low-fare connections serving the greater D.C. area.", link: "https://www.southwest.com" },
+    { name: "JetBlue Airways", desc: "Comfortable mid-flight service with dedicated terminals at DCA and IAD.", link: "https://www.jetblue.com" },
+    { name: "British Airways", desc: "Daily transatlantic international service connecting London Heathrow to IAD.", link: "https://www.britishairways.com" },
+    { name: "Lufthansa", desc: "Major European carrier connecting Frankfurt/Munich directly to Washington Dulles.", link: "https://www.lufthansa.com" },
+    { name: "Air France", desc: "Connecting Paris Charles de Gaulle directly to the capital region.", link: "https://www.airfrance.com" }
+  ];
+
+  function renderTravelDirectories() {
+    const hGrid = document.getElementById('hotelGrid');
+    const cGrid = document.getElementById('carGrid');
+    const aGrid = document.getElementById('airlineGrid');
+
+    hGrid.innerHTML = hotelData.map(h => `
+      <div class="travel-item-card">
+        <div>
+          <div class="travel-item-title">${h.name}</div>
+          <div class="travel-item-desc">${h.desc}</div>
+        </div>
+        <a href="${h.link}" class="travel-link-btn" target="_blank">🌐 Official Website ↗</a>
+      </div>
+    `).join('');
+
+    cGrid.innerHTML = carData.map(c => `
+      <div class="travel-item-card">
+        <div>
+          <div class="travel-item-title">${c.name}</div>
+          <div class="travel-item-desc">${c.desc}</div>
+        </div>
+        <a href="${c.link}" class="travel-link-btn" target="_blank">🌐 Official Website ↗</a>
+      </div>
+    `).join('');
+
+    aGrid.innerHTML = airlineData.map(a => `
+      <div class="travel-item-card">
+        <div>
+          <div class="travel-item-title">${a.name}</div>
+          <div class="travel-item-desc">${a.desc}</div>
+        </div>
+        <a href="${a.link}" class="travel-link-btn" target="_blank">🌐 Official Website ↗</a>
+      </div>
+    `).join('');
+  }
+  renderTravelDirectories();
+
+  function switchTravelTab(tabKey) {
+    document.querySelectorAll('.travel-tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.travel-panel').forEach(p => p.classList.remove('active'));
+
+    event.currentTarget.classList.add('active');
+    document.getElementById(`panel-${tabKey}`).classList.add('active');
+    if(tabKey === 'flights') {
+      renderFlightBoard();
+    }
+  }
+
+  // ── LIVE FLIGHT STATUS BOARD LOGIC ──
+  const mockFlights = {
+    IAD: {
+      arrivals: [
+        { flight: "UA 921", airline: "United Airlines", originDest: "London Heathrow (LHR)", time: "10:14 AM", gate: "B4", status: "On Time" },
+        { flight: "LH 418", airline: "Lufthansa", originDest: "Frankfurt (FRA)", time: "10:35 AM", gate: "A2", status: "On Time" },
+        { flight: "DL 512", airline: "Delta Air Lines", originDest: "Atlanta (ATL)", time: "10:52 AM", gate: "C12", status: "Delayed" },
+        { flight: "BA 293", airline: "British Airways", originDest: "London Heathrow (LHR)", time: "11:15 AM", gate: "B8", status: "On Time" },
+        { flight: "AF 028", airline: "Air France", originDest: "Paris (CDG)", time: "11:40 AM", gate: "A6", status: "On Time" }
+      ],
+      departures: [
+        { flight: "UA 142", airline: "United Airlines", originDest: "San Francisco (SFO)", time: "10:20 AM", gate: "C19", status: "Boarding" },
+        { flight: "UA 918", airline: "United Airlines", originDest: "Tokyo Narita (NRT)", time: "10:50 AM", gate: "D14", status: "On Time" },
+        { flight: "LH 419", airline: "Lufthansa", originDest: "Frankfurt (FRA)", time: "11:10 AM", gate: "A2", status: "On Time" },
+        { flight: "BA 292", airline: "British Airways", originDest: "London Heathrow (LHR)", time: "11:45 AM", gate: "B8", status: "Delayed" }
+      ]
+    },
+    DCA: {
+      arrivals: [
+        { flight: "AA 214", airline: "American Airlines", originDest: "Dallas/Fort Worth (DFW)", time: "10:10 AM", gate: "35", status: "On Time" },
+        { flight: "DL 1180", airline: "Delta Air Lines", originDest: "New York (LGA)", time: "10:28 AM", gate: "14", status: "On Time" },
+        { flight: "WN 421", airline: "Southwest Airlines", originDest: "Chicago (MDW)", time: "10:55 AM", gate: "22", status: "Boarding" },
+        { flight: "B6 812", airline: "JetBlue Airways", originDest: "Boston (BOS)", time: "11:20 AM", gate: "18", status: "On Time" }
+      ],
+      departures: [
+        { flight: "AA 1832", airline: "American Airlines", originDest: "Miami (MIA)", time: "10:15 AM", gate: "28", status: "On Time" },
+        { flight: "DL 2140", airline: "Delta Air Lines", originDest: "Boston (BOS)", time: "10:45 AM", gate: "12", status: "On Time" },
+        { flight: "UA 382", airline: "United Airlines", originDest: "Chicago (ORD)", time: "11:05 AM", gate: "41", status: "Delayed" }
+      ]
+    }
+  };
+
+  function renderFlightBoard() {
+    const airport = document.getElementById('airportFilter').value;
+    const boardType = document.getElementById('boardTypeFilter').value;
+    const header = document.getElementById('originDestHeader');
+    header.textContent = boardType === 'arrivals' ? 'Origin' : 'Destination';
+
+    const list = mockFlights[airport][boardType];
+    const tbody = document.getElementById('flightTableBody');
+    tbody.innerHTML = '';
+
+    list.forEach(f => {
+      let statusClass = 'status-ontime';
+      if(f.status === 'Delayed') statusClass = 'status-delayed';
+      if(f.status === 'Boarding') statusClass = 'status-boarding';
+
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td style="font-weight:700;color:var(--gold);">${f.flight}</td>
+        <td>${f.airline}</td>
+        <td>${f.originDest}</td>
+        <td>${f.time}</td>
+        <td>Gate ${f.gate}</td>
+        <td><span class="status-badge ${statusClass}">${f.status}</span></td>
+      `;
+      tbody.appendChild(row);
+    });
+  }
 
   // ── REAL-TIME VISITOR COUNTER & IP GEOLOCATION TRACKING ──
   async function trackVisitor() {
