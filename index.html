@@ -114,7 +114,7 @@
   }
   .landmark-btn:hover { border-color: var(--gold); background: rgba(212,175,55,0.08); }
 
-  /* ── A-Z VISUAL YELLOW PAGES DIRECTORY ── */
+  /* ── A-Z VISUAL BUSINESS DIRECTORY ── */
   .classifieds-section { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 32px; margin-bottom: 50px; }
   .az-filter { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 24px; }
   .az-letter {
@@ -206,7 +206,7 @@
     <ul class="nav-links">
       <li><a href="#hub">Hubs</a></li>
       <li><a href="#mapSection">Explore Map</a></li>
-      <li><a href="#directory">Yellow Pages A-Z</a></li>
+      <li><a href="#directory">Business Directory A-Z</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -271,9 +271,9 @@
       </div>
     </div>
 
-    <!-- A-Z VISUAL YELLOW PAGES DIRECTORY -->
+    <!-- A-Z VISUAL BUSINESS DIRECTORY -->
     <div class="classifieds-section" id="directory">
-      <h2 class="section-title" style="margin-top:0;"><span>03.</span> A–Z Visual Yellow Pages & Directory</h2>
+      <h2 class="section-title" style="margin-top:0;"><span>03.</span> A–Z Visual Business Directory</h2>
       <p style="color:var(--muted);font-size:0.9rem;margin-bottom:20px;">Explore top-rated D.C. businesses complete with direct website links, contact numbers, and graphics.</p>
       
       <div class="az-filter" id="azFilter"></div>
@@ -461,7 +461,7 @@
     L.popup().setLatLng([lat, lng]).setContent(`<b>${title}</b><br>${desc}`).openOn(map);
   }
 
-  // ── A-Z YELLOW PAGES DIRECTORY DATA ──
+  // ── A-Z BUSINESS DIRECTORY DATA ──
   const directoryData = {
     A: [
       { name: 'Architectural Digest D.C.', icon: '🏛️', phone: '(202) 555-0142', desc: 'Historic preservation and modern architectural firms.', link: '#' },
