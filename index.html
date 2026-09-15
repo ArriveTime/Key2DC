@@ -29,206 +29,237 @@
   /* ── SEPARATE NEWS & TRAFFIC TICKER BAR (SAME LINE) ── */
   .news-ticker-bar {
     background: #04070d; border-bottom: 1px solid var(--border);
-    padding: 8px 20px; font-size: 0.78rem; color: var(--muted);
-    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+    padding: 8px 16px; font-size: 0.75rem; color: var(--muted);
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
   }
-  .ticker-section-group { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; flex: 1; }
-  .ticker-item-wrapper { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 280px; }
+  .ticker-section-group { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; flex: 1; min-width: 0; }
+  .ticker-item-wrapper { display: flex; align-items: center; gap: 8px; flex: 1; min-width: 240px; overflow: hidden; }
   
-  .live-pill { display: flex; align-items: center; gap: 6px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); padding: 2px 8px; border-radius: 20px; color: #10b981; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; white-space: nowrap; }
+  .live-pill { display: flex; align-items: center; gap: 6px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); padding: 2px 8px; border-radius: 20px; color: #10b981; font-weight: 700; font-size: 0.68rem; text-transform: uppercase; white-space: nowrap; }
   .live-dot { width: 6px; height: 6px; background: #10b981; border-radius: 50%; animation: pulse 2s infinite; }
   @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
   
-  .ticker-tag-news { background: rgba(212,175,55,0.15); border: 1px solid var(--border); color: var(--gold); padding: 2px 6px; border-radius: 4px; font-weight: 600; font-size: 0.7rem; text-transform: uppercase; white-space: nowrap; }
-  .ticker-tag-traffic { background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.3); color: #3b82f6; padding: 2px 6px; border-radius: 4px; font-weight: 600; font-size: 0.7rem; text-transform: uppercase; white-space: nowrap; }
+  .ticker-tag-news { background: rgba(212,175,55,0.15); border: 1px solid var(--border); color: var(--gold); padding: 2px 6px; border-radius: 4px; font-weight: 600; font-size: 0.68rem; text-transform: uppercase; white-space: nowrap; }
+  .ticker-tag-traffic { background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.3); color: #3b82f6; padding: 2px 6px; border-radius: 4px; font-weight: 600; font-size: 0.68rem; text-transform: uppercase; white-space: nowrap; }
   
-  .ticker-headline { color: var(--text); font-weight: 500; text-decoration: none; transition: color 0.2s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 420px; }
+  .ticker-headline { color: var(--text); font-weight: 500; text-decoration: none; transition: color 0.2s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 380px; }
   .ticker-headline:hover { color: var(--gold); }
-  .ticker-meta { display: flex; gap: 16px; align-items: center; white-space: nowrap; }
+  .ticker-meta { display: flex; gap: 12px; align-items: center; white-space: nowrap; font-size: 0.72rem; }
   .ticker-meta span { color: var(--gold); font-weight: 600; }
 
   /* ── NAVBAR ── */
   .navbar {
     display: flex; justify-content: space-between; align-items: center;
-    padding: 16px 32px; background: rgba(14,22,36,0.9);
+    padding: 14px 20px; background: rgba(14,22,36,0.95);
     backdrop-filter: blur(16px); border-bottom: 1px solid var(--border);
     position: sticky; top: 0; z-index: 1000;
   }
-  .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 800; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+  /* Letters moved closer together (-0.5px spacing) */
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 800; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 6px; letter-spacing: -0.5px; }
   .nav-logo span { color: var(--gold); }
-  .nav-links { display: flex; gap: 20px; list-style: none; align-items: center; flex-wrap: wrap; }
-  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.2s; }
+  
+  .nav-links { display: flex; gap: 16px; list-style: none; align-items: center; flex-wrap: wrap; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.82rem; font-weight: 500; transition: color 0.2s; }
   .nav-links a:hover { color: var(--gold); }
+
+  /* Mobile Nav Toggle */
+  .mobile-menu-btn { display: none; background: none; border: none; color: var(--gold); font-size: 1.5rem; cursor: pointer; }
 
   /* ── HERO BANNER ── */
   .hero {
-    position: relative; padding: 80px 20px 60px; text-align: center;
+    position: relative; padding: 60px 16px 40px; text-align: center;
     background: linear-gradient(to bottom, rgba(14,22,36,0.8), var(--bg)),
                 radial-gradient(circle at 50% 20%, rgba(212,175,55,0.08), transparent 60%);
     border-bottom: 1px solid var(--border);
   }
+  .hero-branding-tag {
+    display: inline-flex; align-items: center; gap: 8px; font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 12px;
+    background: rgba(212,175,55,0.08); border: 1px solid var(--border); padding: 6px 16px; border-radius: 30px;
+  }
   .hero-badge {
-    display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px;
+    display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px;
     background: rgba(212,175,55,0.1); border: 1px solid var(--border);
-    border-radius: 50px; font-size: 0.75rem; font-weight: 600; color: var(--gold);
-    text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;
+    border-radius: 50px; font-size: 0.7rem; font-weight: 600; color: var(--gold);
+    text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px;
   }
   .hero h1 {
-    font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 4.5rem);
-    font-weight: 800; line-height: 1.1; margin-bottom: 16px;
+    font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5vw, 4.2rem);
+    font-weight: 800; line-height: 1.15; margin-bottom: 14px;
     background: linear-gradient(135deg, #fff 40%, var(--gold-light));
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   }
-  .hero p { color: var(--muted); font-size: 1.1rem; max-width: 650px; margin: 0 auto 30px; line-height: 1.6; }
+  .hero p { color: var(--muted); font-size: 1rem; max-width: 620px; margin: 0 auto 24px; line-height: 1.6; }
 
   /* ── CONTAINER & SECTIONS ── */
-  .container { max-width: 1300px; margin: 0 auto; padding: 40px 20px; }
-  .section-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
+  .container { max-width: 1300px; margin: 0 auto; padding: 30px 16px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
   .section-title span { color: var(--gold); }
 
   .portal-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 50px;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-bottom: 40px;
   }
   .portal-card {
     background: var(--surface); border: 1px solid var(--border);
-    border-radius: 16px; padding: 24px; transition: all 0.25s ease;
+    border-radius: 14px; padding: 20px; transition: all 0.25s ease;
     cursor: pointer; position: relative; overflow: hidden; text-decoration: none; display: block;
   }
-  .portal-card:hover { transform: translateY(-4px); border-color: var(--gold); box-shadow: 0 10px 30px rgba(212,175,55,0.1); }
-  .portal-icon { font-size: 2rem; margin-bottom: 14px; display: block; }
-  .portal-card h3 { font-family: 'Playfair Display', serif; font-size: 1.25rem; margin-bottom: 8px; color: #fff; }
-  .portal-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.5; }
+  .portal-card:hover { transform: translateY(-3px); border-color: var(--gold); box-shadow: 0 10px 30px rgba(212,175,55,0.1); }
+  .portal-icon { font-size: 1.8rem; margin-bottom: 12px; display: block; }
+  .portal-card h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; margin-bottom: 6px; color: #fff; }
+  .portal-card p { font-size: 0.84rem; color: var(--muted); line-height: 1.5; }
 
-  /* ── TRAVEL HUBS SECTION (HOTELS, CARS, AIRLINES & FLIGHTS) ── */
-  .travel-hub-section { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 32px; margin-bottom: 50px; }
-  .travel-tabs { display: flex; gap: 10px; margin-bottom: 24px; flex-wrap: wrap; border-bottom: 1px solid var(--border); padding-bottom: 16px; }
+  /* ── TRAVEL HUBS SECTION ── */
+  .travel-hub-section { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 24px; margin-bottom: 40px; }
+  .travel-tabs { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; border-bottom: 1px solid var(--border); padding-bottom: 14px; }
   .travel-tab-btn {
     background: var(--surface2); border: 1px solid var(--border); color: var(--text);
-    padding: 10px 20px; border-radius: 10px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.2s;
+    padding: 8px 16px; border-radius: 8px; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.2s;
   }
   .travel-tab-btn:hover, .travel-tab-btn.active { background: var(--gold); color: #070b12; border-color: var(--gold); }
 
   .travel-panel { display: none; }
   .travel-panel.active { display: block; }
 
-  .travel-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+  .travel-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }
   .travel-item-card {
-    background: var(--surface2); border: 1px solid var(--border); border-radius: 12px; padding: 20px;
+    background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 18px;
     display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s, border-color 0.2s;
   }
   .travel-item-card:hover { transform: translateY(-2px); border-color: var(--gold); }
-  .travel-item-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 6px; }
-  .travel-item-desc { font-size: 0.82rem; color: var(--muted); margin-bottom: 14px; line-height: 1.4; }
+  .travel-item-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 6px; }
+  .travel-item-desc { font-size: 0.8rem; color: var(--muted); margin-bottom: 12px; line-height: 1.4; }
   .travel-link-btn {
     display: inline-flex; align-items: center; justify-content: center; gap: 6px;
     background: rgba(212,175,55,0.1); border: 1px solid var(--border); color: var(--gold);
-    padding: 8px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; text-decoration: none; transition: all 0.2s;
+    padding: 7px 10px; border-radius: 6px; font-size: 0.78rem; font-weight: 600; text-decoration: none; transition: all 0.2s;
   }
   .travel-link-btn:hover { background: var(--gold); color: #070b12; }
 
   /* Flight Board Table */
-  .flight-controls { display: flex; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; align-items: center; }
-  .flight-select { background: var(--surface2); border: 1px solid var(--border); color: var(--text); padding: 8px 14px; border-radius: 8px; font-size: 0.85rem; }
-  .flight-table-wrapper { overflow-x: auto; max-height: 420px; border-radius: 10px; border: 1px solid var(--border); }
-  .flight-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.82rem; }
-  .flight-table th, .flight-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  .flight-controls { display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; align-items: center; }
+  .flight-select { background: var(--surface2); border: 1px solid var(--border); color: var(--text); padding: 6px 12px; border-radius: 6px; font-size: 0.82rem; }
+  .flight-table-wrapper { overflow-x: auto; max-height: 400px; border-radius: 8px; border: 1px solid var(--border); }
+  .flight-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.8rem; }
+  .flight-table th, .flight-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); white-space: nowrap; }
   .flight-table th { background: var(--surface2); color: var(--gold); font-weight: 700; position: sticky; top: 0; }
-  .status-badge { display: inline-block; padding: 3px 8px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; }
+  .status-badge { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; }
   .status-ontime { background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16,185,129,0.3); }
   .status-delayed { background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.3); }
   .status-boarding { background: rgba(59, 130, 246, 0.15); color: #3b82f6; border: 1px solid rgba(59,130,246,0.3); }
 
-  /* ── FOOD CRITICS CORNER (MICHELIN STAR DIRECTORY) ── */
-  .food-critic-section { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 32px; margin-bottom: 50px; }
-  .critic-header-box { background: var(--surface2); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 24px; border-left: 4px solid var(--gold); }
-  .critic-header-box h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #fff; margin-bottom: 6px; }
-  .critic-header-box p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+  /* ── FOOD CRITICS CORNER ── */
+  .food-critic-section { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 24px; margin-bottom: 40px; }
+  .critic-header-box { background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 18px; margin-bottom: 20px; border-left: 4px solid var(--gold); }
+  .critic-header-box h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: #fff; margin-bottom: 6px; }
+  .critic-header-box p { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
   
-  .michelin-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  .michelin-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
   .michelin-card {
-    background: var(--surface2); border: 1px solid var(--border); border-radius: 14px; padding: 22px;
+    background: var(--surface2); border: 1px solid var(--border); border-radius: 12px; padding: 18px;
     display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s, border-color 0.2s;
-    position: relative; overflow: hidden;
   }
-  .michelin-card:hover { transform: translateY(-3px); border-color: var(--gold); }
-  .michelin-stars { font-size: 1rem; color: var(--gold); font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 4px; }
-  .michelin-name { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
-  .michelin-cuis { font-size: 0.78rem; color: var(--gold); font-weight: 600; text-transform: uppercase; margin-bottom: 10px; }
-  .michelin-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; margin-bottom: 16px; }
+  .michelin-card:hover { transform: translateY(-2px); border-color: var(--gold); }
+  .michelin-stars { font-size: 0.95rem; color: var(--gold); font-weight: 700; margin-bottom: 6px; display: flex; align-items: center; gap: 4px; }
+  .michelin-name { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .michelin-cuis { font-size: 0.75rem; color: var(--gold); font-weight: 600; text-transform: uppercase; margin-bottom: 8px; }
+  .michelin-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.4; margin-bottom: 14px; }
 
   /* ── INTERACTIVE MAP SECTION ── */
   .map-dashboard {
-    display: grid; grid-template-columns: 1fr 340px; gap: 24px; margin-bottom: 50px;
+    display: grid; grid-template-columns: 1fr 320px; gap: 20px; margin-bottom: 40px;
   }
   @media(max-width: 900px) { .map-dashboard { grid-template-columns: 1fr; } }
   
-  #map { width: 100%; height: 480px; border-radius: 16px; border: 1px solid var(--border); }
-  .map-sidebar { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 14px; max-height: 480px; overflow-y: auto; }
+  #map { width: 100%; height: 400px; border-radius: 14px; border: 1px solid var(--border); }
+  .map-sidebar { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 10px; max-height: 400px; overflow-y: auto; }
   .landmark-btn {
-    background: var(--surface2); border: 1px solid var(--border); border-radius: 10px;
-    padding: 12px; text-align: left; color: var(--text); cursor: pointer; transition: all 0.2s;
-    display: flex; align-items: center; gap: 10px; font-size: 0.9rem; font-weight: 500;
+    background: var(--surface2); border: 1px solid var(--border); border-radius: 8px;
+    padding: 10px 12px; text-align: left; color: var(--text); cursor: pointer; transition: all 0.2s;
+    display: flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 500;
   }
   .landmark-btn:hover { border-color: var(--gold); background: rgba(212,175,55,0.08); }
 
   /* ── A-Z VISUAL BUSINESS DIRECTORY ── */
-  .classifieds-section { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 32px; margin-bottom: 50px; }
-  .az-filter { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 24px; }
+  .classifieds-section { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 24px; margin-bottom: 40px; }
+  .az-filter { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 20px; }
   .az-letter {
-    width: 34px; height: 34px; background: var(--surface2); border: 1px solid var(--border);
-    border-radius: 8px; display: grid; place-items: center; font-size: 0.85rem; font-weight: 700;
+    width: 32px; height: 32px; background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 6px; display: grid; place-items: center; font-size: 0.82rem; font-weight: 700;
     cursor: pointer; transition: all 0.2s; color: var(--gold);
   }
   .az-letter:hover, .az-letter.active { background: var(--gold); color: #070b12; }
   
-  .directory-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  .directory-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
   .directory-card {
-    background: var(--surface2); border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+    background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
     display: flex; flex-direction: column; transition: transform 0.2s, border-color 0.2s;
   }
-  .directory-card:hover { transform: translateY(-3px); border-color: var(--gold); }
+  .directory-card:hover { transform: translateY(-2px); border-color: var(--gold); }
   .directory-img {
-    width: 100%; height: 140px; background: linear-gradient(135deg, #162235, #0f172a);
-    display: grid; place-items: center; font-size: 2.5rem; border-bottom: 1px solid var(--border);
-    position: relative; overflow: hidden;
+    width: 100%; height: 120px; background: linear-gradient(135deg, #162235, #0f172a);
+    display: grid; place-items: center; font-size: 2.2rem; border-bottom: 1px solid var(--border);
   }
-  .directory-content { padding: 16px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
-  .directory-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 6px; }
-  .directory-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.4; margin-bottom: 12px; }
-  .directory-meta { font-size: 0.8rem; color: var(--gold); font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+  .directory-content { padding: 14px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+  .directory-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 6px; }
+  .directory-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.4; margin-bottom: 10px; }
+  .directory-meta { font-size: 0.78rem; color: var(--gold); font-weight: 600; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
   .directory-btn {
     display: inline-flex; align-items: center; justify-content: center; gap: 6px;
     background: rgba(212,175,55,0.1); border: 1px solid var(--border); color: var(--gold);
-    padding: 8px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; text-decoration: none;
+    padding: 7px 10px; border-radius: 6px; font-size: 0.78rem; font-weight: 600; text-decoration: none;
     transition: all 0.2s;
   }
   .directory-btn:hover { background: var(--gold); color: #070b12; }
 
   /* ── CONTACT SECTION ── */
-  .contact-section { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 32px; text-align: center; margin-bottom: 50px; }
+  .contact-section { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 24px; text-align: center; margin-bottom: 40px; }
   .contact-btn {
     display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, var(--gold), #b89728);
-    color: #070b12; padding: 12px 24px; border-radius: 10px; font-weight: 700; text-decoration: none; margin-top: 16px;
-    box-shadow: 0 0 20px var(--glow); transition: transform 0.2s;
+    color: #070b12; padding: 10px 20px; border-radius: 8px; font-weight: 700; text-decoration: none; margin-top: 14px;
+    box-shadow: 0 0 20px var(--glow); transition: transform 0.2s; font-size: 0.9rem;
   }
   .contact-btn:hover { transform: translateY(-2px); }
 
   /* ── LEGAL & FOOTER ── */
-  .legal-notice { font-size: 0.75rem; color: var(--muted); line-height: 1.6; max-width: 900px; margin: 0 auto 20px; padding: 0 20px; text-align: center; border-top: 1px solid var(--border); padding-top: 24px; }
-  footer { background: #04070d; border-top: 1px solid var(--border); padding: 30px 20px; text-align: center; color: var(--muted); font-size: 0.82rem; }
+  .legal-notice { font-size: 0.72rem; color: var(--muted); line-height: 1.5; max-width: 900px; margin: 0 auto 20px; padding: 0 16px; text-align: center; border-top: 1px solid var(--border); padding-top: 20px; }
+  footer { background: #04070d; border-top: 1px solid var(--border); padding: 24px 16px; text-align: center; color: var(--muted); font-size: 0.8rem; }
   footer a { color: var(--gold); text-decoration: none; }
-  .admin-link { color: #475569; font-size: 0.7rem; cursor: pointer; text-decoration: underline; margin-top: 10px; display: inline-block; }
+  .admin-link { color: #475569; font-size: 0.68rem; cursor: pointer; text-decoration: underline; margin-top: 8px; display: inline-block; }
   .admin-link:hover { color: var(--gold); }
 
   /* ── ADMIN MODAL ── */
-  #adminModal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 9999; place-items: center; padding: 20px; }
-  .admin-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 24px; width: 100%; max-width: 800px; max-height: 80vh; overflow-y: auto; }
-  .admin-table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 0.8rem; text-align: left; }
-  .admin-table th, .admin-table td { padding: 10px; border-bottom: 1px solid var(--border); }
+  #adminModal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 9999; place-items: center; padding: 16px; }
+  .admin-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 20px; width: 100%; max-width: 750px; max-height: 80vh; overflow-y: auto; }
+  .admin-table { width: 100%; border-collapse: collapse; margin-top: 14px; font-size: 0.78rem; text-align: left; }
+  .admin-table th, .admin-table td { padding: 8px; border-bottom: 1px solid var(--border); }
   .admin-table th { color: var(--gold); }
-  .close-modal { background: var(--surface2); border: 1px solid var(--border); color: var(--text); padding: 6px 12px; border-radius: 6px; cursor: pointer; float: right; }
+  .close-modal { background: var(--surface2); border: 1px solid var(--border); color: var(--text); padding: 5px 10px; border-radius: 6px; cursor: pointer; float: right; font-size: 0.78rem; }
 
   .leaflet-tile { filter: invert(1) hue-rotate(190deg) brightness(0.8) saturate(1.4); }
+
+  /* ── MOBILE RESPONSIVE MEDIA QUERIES ── */
+  @media (max-width: 768px) {
+    .navbar { padding: 12px 16px; }
+    .nav-links {
+      display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0;
+      background: var(--surface); border-bottom: 1px solid var(--border); padding: 16px; gap: 12px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    }
+    .nav-links.mobile-open { display: flex; }
+    .mobile-menu-btn { display: block; }
+    .hero { padding: 40px 14px 30px; }
+    .hero h1 { font-size: 2rem; }
+    .hero p { font-size: 0.9rem; }
+    .section-title { font-size: 1.35rem; }
+    .portal-grid, .travel-grid, .michelin-grid, .directory-grid { grid-template-columns: 1fr; }
+    .travel-hub-section, .food-critic-section, .classifieds-section, .contact-section { padding: 18px; }
+    .news-ticker-bar { flex-direction: column; align-items: flex-start; gap: 6px; }
+    .ticker-section-group { width: 100%; flex-direction: column; align-items: flex-start; gap: 6px; }
+    .ticker-item-wrapper { width: 100%; max-width: 100%; }
+    .ticker-headline { max-width: 100%; }
+    .ticker-meta { width: 100%; justify-content: space-between; }
+  }
 </style>
 </head>
 <body>
@@ -260,18 +291,21 @@
   <!-- NAVIGATION -->
   <nav class="navbar">
     <a href="#" class="nav-logo">🏛️ Key<span>To</span>DC.com</a>
-    <ul class="nav-links">
-      <li><a href="#hub">Hubs</a></li>
-      <li><a href="#travelHub">Travel & Flights</a></li>
-      <li><a href="#foodCriticSection">Food Critic's Corner</a></li>
-      <li><a href="#mapSection">Explore Map</a></li>
-      <li><a href="#directory">Business Directory A-Z</a></li>
-      <li><a href="#contact">Contact</a></li>
+    <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#hub" onclick="closeMobileMenu()">Hubs</a></li>
+      <li><a href="#travelHub" onclick="closeMobileMenu()">Travel & Flights</a></li>
+      <li><a href="#foodCriticSection" onclick="closeMobileMenu()">Food Critic</a></li>
+      <li><a href="#techTools" onclick="closeMobileMenu()">Technology Tools</a></li>
+      <li><a href="#mapSection" onclick="closeMobileMenu()">Explore Map</a></li>
+      <li><a href="#directory" onclick="closeMobileMenu()">Directory A-Z</a></li>
+      <li><a href="#contact" onclick="closeMobileMenu()">Contact</a></li>
     </ul>
   </nav>
 
   <!-- HERO SECTION -->
   <header class="hero">
+    <div class="hero-branding-tag">🔑 KeyToDC.com</div>
     <div class="hero-badge">✦ The Ultimate Washington, D.C. Super-Portal ✦</div>
     <h1>Your Key to Washington, D.C.</h1>
     <p>The definitive gateway connecting you to world-class real estate, power politics, breaking news, elite dining, historic monuments, and comprehensive capital travel resources.</p>
@@ -312,18 +346,23 @@
         <h3>Weather, Sports & Transit</h3>
         <p>Live meteorological tracking, stadium schedules for D.C. sports teams, and real-time WMATA transit alerts.</p>
       </div>
+      <a href="#techTools" class="portal-card">
+        <span class="portal-icon">⚡</span>
+        <h3>Technology Tools</h3>
+        <p>Explore cutting-edge digital platforms, real-time arrival systems, and intelligent capital software solutions like ArriveTime.com and 4ETA.com.</p>
+      </a>
     </div>
 
     <!-- TRAVEL DIRECTORY & LIVE FLIGHT BOARDS -->
     <div class="travel-hub-section" id="travelHub">
       <h2 class="section-title" style="margin-top:0;"><span>02.</span> Comprehensive Travel & Airline Directory</h2>
-      <p style="color:var(--muted);font-size:0.9rem;margin-bottom:20px;">Explore official hotel groups, rental car fleets, global airline websites, and live flight arrival/departure boards for D.C. area airports (IAD, DCA).</p>
+      <p style="color:var(--muted);font-size:0.88rem;margin-bottom:18px;">Explore official hotel groups, rental car fleets, global airline websites, and live flight arrival/departure boards for D.C. area airports (IAD, DCA).</p>
       
       <div class="travel-tabs">
-        <button class="travel-tab-btn active" onclick="switchTravelTab('hotels')">🏨 Hotel Directory</button>
-        <button class="travel-tab-btn" onclick="switchTravelTab('cars')">🚗 Rental Car Directory</button>
-        <button class="travel-tab-btn" onclick="switchTravelTab('airlines')">✈️ Airline Directory</button>
-        <button class="travel-tab-btn" onclick="switchTravelTab('flights')">🕒 Live Flight Status Board</button>
+        <button class="travel-tab-btn active" onclick="switchTravelTab('hotels')">🏨 Hotels</button>
+        <button class="travel-tab-btn" onclick="switchTravelTab('cars')">🚗 Rental Cars</button>
+        <button class="travel-tab-btn" onclick="switchTravelTab('airlines')">✈️ Airlines</button>
+        <button class="travel-tab-btn" onclick="switchTravelTab('flights')">🕒 Flight Status</button>
       </div>
 
       <!-- Hotels Panel -->
@@ -345,14 +384,14 @@
       <div id="panel-flights" class="travel-panel">
         <div class="flight-controls">
           <div>
-            <label style="font-size:0.8rem;color:var(--muted);margin-right:8px;">Airport:</label>
+            <label style="font-size:0.78rem;color:var(--muted);margin-right:6px;">Airport:</label>
             <select id="airportFilter" class="flight-select" onchange="renderFlightBoard()">
               <option value="IAD">Washington Dulles (IAD)</option>
               <option value="DCA">Ronald Reagan National (DCA)</option>
             </select>
           </div>
           <div>
-            <label style="font-size:0.8rem;color:var(--muted);margin-right:8px;">Board Type:</label>
+            <label style="font-size:0.78rem;color:var(--muted);margin-right:6px;">Board:</label>
             <select id="boardTypeFilter" class="flight-select" onchange="renderFlightBoard()">
               <option value="arrivals">Arrivals</option>
               <option value="departures">Departures</option>
@@ -386,30 +425,55 @@
         <h3>The Capital Palate Column</h3>
         <p>Welcome to our curated critique of Washington, D.C.'s premier culinary landscape. From political power dinners in downtown salons to innovative tasting menus across the district, explore the crown jewels of the capital's dining scene recognized by the Michelin Guide.</p>
       </div>
-      <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:16px;color:#fff;">⭐️ Michelin-Star Rated Restaurants Directory</h3>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:14px;color:#fff;">⭐️ Michelin-Star Rated Restaurants Directory</h3>
       <div class="michelin-grid" id="michelinGrid"></div>
     </div>
 
+    <!-- TECHNOLOGY TOOLS CATEGORY (ARRIVETIME.COM & 4ETA.COM) -->
+    <div class="food-critic-section" id="techTools">
+      <h2 class="section-title" style="margin-top:0;"><span>04.</span> Technology Tools & Solutions</h2>
+      <div class="critic-header-box">
+        <h3>Next-Generation Transit & Tracking Innovations</h3>
+        <p>Discover advanced digital applications designed to streamline urban mobility, time management, and precision tracking across metropolitan centers.</p>
+      </div>
+      <div class="travel-grid">
+        <div class="travel-item-card" style="background:var(--surface2);">
+          <div>
+            <div class="travel-item-title">🚀 ArriveTime.com</div>
+            <div class="travel-item-desc">Advanced arrival prediction and scheduling software engineered for high-precision time management, transit synchronization, and dependable schedule adherence.</div>
+          </div>
+          <a href="https://arrivetime.com" class="travel-link-btn" target="_blank" style="margin-top:14px;">🌐 Visit ArriveTime.com ↗</a>
+        </div>
+        <div class="travel-item-card" style="background:var(--surface2);">
+          <div>
+            <div class="travel-item-title">⏱️ 4ETA.com</div>
+            <div class="travel-item-desc">Real-time estimated time of arrival (ETA) intelligence platform providing dynamic tracking algorithms and instant transit updates for commuters and logistics.</div>
+          </div>
+          <a href="https://4eta.com" class="travel-link-btn" target="_blank" style="margin-top:14px;">🌐 Visit 4ETA.com ↗</a>
+        </div>
+      </div>
+    </div>
+
     <!-- INTERACTIVE MAP & EXPLORER -->
-    <h2 class="section-title" id="mapSection"><span>04.</span> Interactive D.C. Command Map</h2>
+    <h2 class="section-title" id="mapSection"><span>05.</span> Interactive D.C. Command Map</h2>
     <div class="map-dashboard">
       <div id="map"></div>
       <div class="map-sidebar">
-        <div style="font-family:'Playfair Display',serif;font-weight:700;font-size:1.1rem;margin-bottom:4px;">Key Landmarks</div>
-        <p style="font-size:0.78rem;color:var(--muted);margin-bottom:10px;">Click any location to focus map and preview details.</p>
+        <div style="font-family:'Playfair Display',serif;font-weight:700;font-size:1.05rem;margin-bottom:2px;">Key Landmarks</div>
+        <p style="font-size:0.75rem;color:var(--muted);margin-bottom:8px;">Click any location to focus map.</p>
         
         <button class="landmark-btn" onclick="focusLandmark(38.8977, -77.0365, 'The White House', 'Executive mansion and official workplace of the President.')">🏛️ The White House</button>
         <button class="landmark-btn" onclick="focusLandmark(38.8899, -77.0091, 'U.S. Capitol Building', 'Meeting place of the United States Congress.')">🏛️ U.S. Capitol Building</button>
-        <button class="landmark-btn" onclick="focusLandmark(38.8895, -77.0352, 'Washington Monument', 'Obelisk on the National Mall built to commemorate George Washington.')">🗼 Washington Monument</button>
-        <button class="landmark-btn" onclick="focusLandmark(38.8893, -77.0502, 'Lincoln Memorial', 'American national monument built to honor Abraham Lincoln.')">🏛️ Lincoln Memorial</button>
-        <button class="landmark-btn" onclick="focusLandmark(38.8881, -77.0261, 'Smithsonian Air & Space Museum', 'World-renowned museum housing historic aviation artifacts.')">✈️ Air & Space Museum</button>
+        <button class="landmark-btn" onclick="focusLandmark(38.8895, -77.0352, 'Washington Monument', 'Obelisk on the National Mall.')">🗼 Washington Monument</button>
+        <button class="landmark-btn" onclick="focusLandmark(38.8893, -77.0502, 'Lincoln Memorial', 'American national monument.')">🏛️ Lincoln Memorial</button>
+        <button class="landmark-btn" onclick="focusLandmark(38.8881, -77.0261, 'Smithsonian Air & Space Museum', 'Historic aviation museum.')">✈️ Air & Space Museum</button>
       </div>
     </div>
 
     <!-- A-Z VISUAL BUSINESS DIRECTORY -->
     <div class="classifieds-section" id="directory">
-      <h2 class="section-title" style="margin-top:0;"><span>05.</span> A–Z Visual Business Directory</h2>
-      <p style="color:var(--muted);font-size:0.9rem;margin-bottom:20px;">Explore top-rated D.C. businesses complete with direct website links, contact numbers, and graphics.</p>
+      <h2 class="section-title" style="margin-top:0;"><span>06.</span> A–Z Visual Business Directory</h2>
+      <p style="color:var(--muted);font-size:0.88rem;margin-bottom:18px;">Explore top-rated D.C. businesses complete with direct website links, contact numbers, and graphics.</p>
       
       <div class="az-filter" id="azFilter"></div>
       <div class="directory-grid" id="directoryGrid"></div>
@@ -417,9 +481,9 @@
 
     <!-- CONTACT SECTION -->
     <div class="contact-section" id="contact">
-      <h2 class="section-title" style="justify-content:center;margin-bottom:10px;"><span>✦</span> Get in Touch</h2>
-      <p style="color:var(--muted);font-size:0.95rem;max-width:600px;margin:0 auto;">Have questions, advertising inquiries, or listing requests for KeyToDC.com? Reach out to our team directly.</p>
-      <div style="margin-top:16px;font-size:1.05px;font-weight:600;color:var(--gold);">Email: All4aim@hotmail.com</div>
+      <h2 class="section-title" style="justify-content:center;margin-bottom:8px;"><span>✦</span> Get in Touch</h2>
+      <p style="color:var(--muted);font-size:0.9rem;max-width:580px;margin:0 auto;">Have questions, advertising inquiries, or listing requests for KeyToDC.com? Reach out to our team directly.</p>
+      <div style="margin-top:14px;font-size:0.95rem;font-weight:600;color:var(--gold);">Email: All4aim@hotmail.com</div>
       <a href="mailto:All4aim@hotmail.com" class="contact-btn">✉️ Send Email to All4aim@hotmail.com</a>
     </div>
 
@@ -440,8 +504,8 @@
   <div id="adminModal">
     <div class="admin-card">
       <button class="close-modal" onclick="document.getElementById('adminModal').style.display='none'">Close ✕</button>
-      <h3 style="font-family:'Playfair Display',serif;color:var(--gold);margin-bottom:10px;">🛡️ Visitor Traffic Analytics Log</h3>
-      <p style="font-size:0.8rem;color:var(--muted);">Real-time tracking of visitor Date, Day, Time, City, State, and IP Address.</p>
+      <h3 style="font-family:'Playfair Display',serif;color:var(--gold);margin-bottom:8px;">🛡️ Visitor Traffic Analytics Log</h3>
+      <p style="font-size:0.78rem;color:var(--muted);">Real-time tracking of visitor Date, Day, Time, City, State, and IP Address.</p>
       <div style="overflow-x:auto;">
         <table class="admin-table">
           <thead>
@@ -463,6 +527,14 @@
   </div>
 
 <script>
+  // ── MOBILE MENU TOGGLE ──
+  function toggleMobileMenu() {
+    document.getElementById('navLinks').classList.toggle('mobile-open');
+  }
+  function closeMobileMenu() {
+    document.getElementById('navLinks').classList.remove('mobile-open');
+  }
+
   // ── LIVE CLOCK UPDATE ──
   setInterval(() => {
     const now = new Date();
@@ -600,7 +672,7 @@
     }
   }
 
-  // ── MICHELIN STAR RESTAURANTS DATA (FOOD CRITIC'S CORNER) ──
+  // ── MICHELIN STAR RESTAURANTS DATA ──
   const michelinData = [
     { name: "The Inn at Little Washington", stars: "⭐⭐⭐", cuisine: "Contemporary American", desc: "Patrick O'Connell's legendary culinary sanctuary in Virginia hill country offering sublime multi-course epicurean journeys.", link: "https://www.theinnatlittlewashington.com" },
     { name: "Minibar by José Andrés", stars: "⭐⭐", cuisine: "Avant-Garde / Molecular", desc: "An intimate, 12-seat theatrical dining laboratory pushing the boundaries of taste, texture, and sensory design.", link: "https://www.minibarbyjoseandres.com" },
@@ -686,7 +758,7 @@
     });
   }
 
-  // ── REAL-TIME VISITOR COUNTER & IP GEOLOCATION TRACKING ──
+  // ── VISITOR COUNTER & IP GEOLOCATION ──
   async function trackVisitor() {
     try {
       const res = await fetch('https://ipapi.co/json/');
