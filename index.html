@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Key2DC.com — Your Key to Washington, D.C.</title>
+<title>KeyToDC.com — Your Key to Washington, D.C.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
@@ -26,17 +26,21 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: var(--bg); color: var(--text); font-family: 'Plus Jakarta Sans', sans-serif; min-height: 100vh; overflow-x: hidden; }
 
-  /* ── LIVE TOP TICKER ── */
-  .top-ticker {
+  /* ── LIVE REAL-TIME NEWS & POLITICS TICKER ── */
+  .news-ticker-bar {
     background: #04070d; border-bottom: 1px solid var(--border);
     padding: 8px 20px; font-size: 0.78rem; color: var(--muted);
     display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
   }
-  .ticker-group { display: flex; gap: 20px; align-items: center; }
-  .ticker-item { display: flex; align-items: center; gap: 6px; }
-  .ticker-item span { color: var(--gold); font-weight: 600; }
-  .live-dot { width: 7px; height: 7px; background: #10b981; border-radius: 50%; animation: pulse 2s infinite; }
+  .ticker-left { display: flex; align-items: center; gap: 12px; }
+  .live-pill { display: flex; align-items: center; gap: 6px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); padding: 2px 8px; border-radius: 20px; color: #10b981; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; }
+  .live-dot { width: 6px; height: 6px; background: #10b981; border-radius: 50%; animation: pulse 2s infinite; }
   @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+  
+  .ticker-headline { color: var(--text); font-weight: 500; text-decoration: none; transition: color 0.2s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 600px; }
+  .ticker-headline:hover { color: var(--gold); }
+  .ticker-meta { display: flex; gap: 16px; align-items: center; }
+  .ticker-meta span { color: var(--gold); font-weight: 600; }
 
   /* ── NAVBAR ── */
   .navbar {
@@ -91,7 +95,7 @@
   .portal-card h3 { font-family: 'Playfair Display', serif; font-size: 1.25rem; margin-bottom: 8px; color: #fff; }
   .portal-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.5; }
 
-  /* ── INTERACTIVE MAP & EXPLORER SECTION ── */
+  /* ── INTERACTIVE MAP SECTION ── */
   .map-dashboard {
     display: grid; grid-template-columns: 1fr 340px; gap: 24px; margin-bottom: 50px;
   }
@@ -106,7 +110,7 @@
   }
   .landmark-btn:hover { border-color: var(--gold); background: rgba(212,175,55,0.08); }
 
-  /* ── A-Z CLASSIFIEDS & DIRECTORY ── */
+  /* ── A-Z VISUAL YELLOW PAGES DIRECTORY ── */
   .classifieds-section { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 32px; margin-bottom: 50px; }
   .az-filter { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 24px; }
   .az-letter {
@@ -115,9 +119,29 @@
     cursor: pointer; transition: all 0.2s; color: var(--gold);
   }
   .az-letter:hover, .az-letter.active { background: var(--gold); color: #070b12; }
-  .directory-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
-  .directory-item { background: var(--surface2); border: 1px solid var(--border); padding: 14px; border-radius: 10px; font-size: 0.88rem; }
-  .directory-item strong { display: block; color: #fff; margin-bottom: 4px; font-family: 'Playfair Display', serif; }
+  
+  .directory-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  .directory-card {
+    background: var(--surface2); border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+    display: flex; flex-direction: column; transition: transform 0.2s, border-color 0.2s;
+  }
+  .directory-card:hover { transform: translateY(-3px); border-color: var(--gold); }
+  .directory-img {
+    width: 100%; height: 140px; background: linear-gradient(135deg, #162235, #0f172a);
+    display: grid; place-items: center; font-size: 2.5rem; border-bottom: 1px solid var(--border);
+    position: relative; overflow: hidden;
+  }
+  .directory-content { padding: 16px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+  .directory-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 6px; }
+  .directory-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.4; margin-bottom: 12px; }
+  .directory-meta { font-size: 0.8rem; color: var(--gold); font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+  .directory-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    background: rgba(212,175,55,0.1); border: 1px solid var(--border); color: var(--gold);
+    padding: 8px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; text-decoration: none;
+    transition: all 0.2s;
+  }
+  .directory-btn:hover { background: var(--gold); color: #070b12; }
 
   /* ── FOOTER ── */
   footer { background: #04070d; border-top: 1px solid var(--border); padding: 40px 20px; text-align: center; color: var(--muted); font-size: 0.85rem; }
@@ -128,27 +152,26 @@
 </head>
 <body>
 
-  <!-- LIVE TOP TICKER -->
-  <div class="top-ticker">
-    <div class="ticker-group">
-      <div class="ticker-item"><div class="live-dot"></div><span>D.C. Live Pulse</span></div>
-      <div class="ticker-item">Time: <span id="dcTime">--:--:-- EDT</span></div>
-      <div class="ticker-item">Weather: <span id="dcWeather">68°F · Clear Skies</span></div>
+  <!-- LIVE REAL-TIME NEWS & POLITICS TICKER -->
+  <div class="news-ticker-bar">
+    <div class="ticker-left">
+      <div class="live-pill"><div class="live-dot"></div>Live Feed</div>
+      <a href="#" id="tickerLink" class="ticker-headline" target="_blank">Loading live Washington D.C. news & politics headlines...</a>
     </div>
-    <div class="ticker-group">
-      <div class="ticker-item">Traffic: <span style="color:#10b981;">Flowing Smoothly</span></div>
-      <div class="ticker-item">Metro: <span style="color:#10b981;">All Lines Normal</span></div>
+    <div class="ticker-meta">
+      <div>Time: <span id="dcTime">--:--:-- EDT</span></div>
+      <div>Weather: <span id="dcWeather">68°F · Clear</span></div>
     </div>
   </div>
 
   <!-- NAVIGATION -->
   <nav class="navbar">
-    <a href="#" class="nav-logo">🏛️ Key<span>2DC</span>.com</a>
+    <a href="#" class="nav-logo">🏛️ Key<span>To</span>DC.com</a>
     <ul class="nav-links">
       <li><a href="#hub">Hubs</a></li>
       <li><a href="#mapSection">Explore Map</a></li>
-      <li><a href="#classifieds">A-Z Directory</a></li>
-      <li><a href="#classifieds" class="nav-cta">Post Classified</a></li>
+      <li><a href="#directory">Yellow Pages A-Z</a></li>
+      <li><a href="#directory" class="nav-cta">List Your Business</a></li>
     </ul>
   </nav>
 
@@ -189,7 +212,7 @@
         <h3>Education & Culture</h3>
         <p>Guides to local universities (Georgetown, GWU, AU, Howard), museums, theaters, and performing arts.</p>
       </div>
-      <div class="portal-card" onclick="alert('Navigating to Weather, Traffic & Sports Hub...')">
+      <div class="portal-card" onclick="alert('Navigating to Weather, Sports & Transit Hub...')">
         <span class="portal-icon">🏈</span>
         <h3>Weather, Sports & Transit</h3>
         <p>Live meteorological tracking, stadium schedules for D.C. sports teams, and real-time WMATA transit alerts.</p>
@@ -208,29 +231,24 @@
         <button class="landmark-btn" onclick="focusLandmark(38.8899, -77.0091, 'U.S. Capitol Building', 'Meeting place of the United States Congress.')">🏛️ U.S. Capitol Building</button>
         <button class="landmark-btn" onclick="focusLandmark(38.8895, -77.0352, 'Washington Monument', 'Obelisk on the National Mall built to commemorate George Washington.')">🗼 Washington Monument</button>
         <button class="landmark-btn" onclick="focusLandmark(38.8893, -77.0502, 'Lincoln Memorial', 'American national monument built to honor Abraham Lincoln.')">🏛️ Lincoln Memorial</button>
-        <button class="landmark-btn" onclick="focusLandmark(38.8881, -77.0261, 'Smithsonian National Air & Space Museum', 'World-renowned museum housing historic aviation artifacts.')">✈️ Air & Space Museum</button>
+        <button class="landmark-btn" onclick="focusLandmark(38.8881, -77.0261, 'Smithsonian Air & Space Museum', 'World-renowned museum housing historic aviation artifacts.')">✈️ Air & Space Museum</button>
       </div>
     </div>
 
-    <!-- A-Z CLASSIFIEDS & DIRECTORY -->
-    <div class="classifieds-section" id="classifieds">
-      <h2 class="section-title" style="margin-top:0;"><span>03.</span> A–Z Capital Directory & Classifieds</h2>
-      <p style="color:var(--muted);font-size:0.9rem;margin-bottom:20px;">Explore everything Washington, D.C. has to offer categorized alphabetically from commerce to culture.</p>
+    <!-- A-Z VISUAL YELLOW PAGES DIRECTORY -->
+    <div class="classifieds-section" id="directory">
+      <h2 class="section-title" style="margin-top:0;"><span>03.</span> A–Z Visual Yellow Pages & Directory</h2>
+      <p style="color:var(--muted);font-size:0.9rem;margin-bottom:20px;">Explore top-rated D.C. businesses complete with direct website links, contact numbers, and graphics.</p>
       
-      <div class="az-filter" id="azFilter">
-        <!-- JS will populate letters A-Z -->
-      </div>
-
-      <div class="directory-list" id="directoryList">
-        <!-- Dynamic content based on letter selection -->
-      </div>
+      <div class="az-filter" id="azFilter"></div>
+      <div class="directory-grid" id="directoryGrid"></div>
     </div>
 
   </div>
 
   <!-- FOOTER -->
   <footer>
-    <p>&copy; 2026 <strong>Key2DC.com</strong> — "Your Key to DC". All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    <p>&copy; 2026 <strong>KeyToDC.com</strong> — "Your Key to DC". All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
   </footer>
 
 <script>
@@ -239,6 +257,32 @@
     const now = new Date();
     document.getElementById('dcTime').textContent = now.toLocaleTimeString('en-US', { timeZone: 'America/New_York' }) + ' EDT';
   }, 1000);
+
+  // ── AUTOMATIC REAL-TIME NEWS & POLITICS TICKER FETCH ──
+  async function fetchLiveNews() {
+    try {
+      // Pulls live public feed items (automatically updates without manual intervention)
+      const response = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://www.washingtontimes.com/rss/headlines/news/politics/');
+      const data = await response.json();
+      if (data && data.items && data.items.length > 0) {
+        let currentIndex = 0;
+        const tickerElement = document.getElementById('tickerLink');
+        
+        function updateTickerText() {
+          const item = data.items[currentIndex];
+          tickerElement.textContent = `🗞️ ${item.title}`;
+          tickerElement.href = item.link;
+          currentIndex = (currentIndex + 1) % data.items.length;
+        }
+        
+        updateTickerText();
+        setInterval(updateTickerText, 6000); // Rotates headlines every 6 seconds automatically
+      }
+    } catch (e) {
+      document.getElementById('tickerLink').textContent = "🗞️ Breaking Politics: Capitol Hill Updates & D.C. Municipal News Live Feed";
+    }
+  }
+  fetchLiveNews();
 
   // ── LEAFLET MAP SETUP ──
   let map = L.map('map', { zoomControl: false }).setView([38.8951, -77.0364], 13);
@@ -262,38 +306,113 @@
     L.popup().setLatLng([lat, lng]).setContent(`<b>${title}</b><br>${desc}`).openOn(map);
   }
 
-  // ── A-Z CLASSIFIEDS DIRECTORY GENERATOR ──
+  // ── A-Z YELLOW PAGES DIRECTORY DATA ──
   const directoryData = {
-    A: [{name: 'Architecture & Design', desc: 'Historic preservation and modern architectural firms.'}, {name: 'Arts & Theaters', desc: 'The Kennedy Center, local galleries and performing arts.'}],
-    B: [{name: 'Boutique Hotels', desc: 'Luxury stays across Georgetown, Dupont Circle and Capitol Hill.'}, {name: 'Banking & Finance', desc: 'Federal credit unions, investment houses and wealth advisory.'}],
-    C: [{name: 'Capitol Hill Insiders', desc: 'Political consulting, lobbying and legislative tracking groups.'}, {name: 'Culinary Tours', desc: 'Guided food crawls through Michelin-star districts.'}],
-    D: [{name: 'Diplomatic Services', embassies: 'Foreign embassies, cultural centers and international trade offices.'}, {name: 'Downtown Real Estate', desc: 'Commercial leases and luxury residential condominiums.'}],
-    E: [{name: 'Embassy Row Events', desc: 'Exclusive cultural galas and open-house diplomatic showcases.'}, {name: 'Education & Academics', desc: 'Local universities, think tanks and policy research centers.'}],
-    F: [{name: 'Fine Dining Guide', desc: 'Top-tier culinary experiences, wine bars and tasting menus.'}, {name: 'Federal Contracting', desc: 'GovCon networking, procurement assistance and legal support.'}],
-    G: [{name: 'Georgetown Living', desc: 'Historic rowhouse listings, shopping guides and waterfront dining.'}, {name: 'Government Agencies', desc: 'Federal directories, visitor centers and public services.'}],
-    H: [{name: 'Historic Sites & Museums', desc: 'Smithsonian institutions, memorials and national parks.'}, {name: 'Healthcare & Hospitals', desc: 'MedStar, GW Hospital and specialized medical networks.'}],
-    I: [{name: 'International Press', desc: 'Foreign correspondent bureaus, media clubs and press passes.'}, {name: 'Interior Design', desc: 'High-end antique dealers and bespoke home styling studios.'}],
-    J: [{name: 'Judiciary & Legal', desc: 'Supreme Court info, federal courts and top-tier litigation firms.'}, {name: 'Jazz & Nightlife', desc: 'Historic jazz clubs, lounges and live entertainment venues.'}],
-    K: [{name: 'Key Real Estate Listings', desc: 'Exclusive residential properties across the D.C. metro area.'}, {name: 'Korean Culture Center', desc: 'Exhibitions, culinary classes and cultural events.'}],
-    L: [{name: 'Libraries & Archives', desc: 'Library of Congress, National Archives and public libraries.'}, {name: 'Luxury Transport', desc: 'Chauffeur services, private car rentals and executive transit.'}],
-    M: [{name: 'Metro & Transit Guide', desc: 'WMATA rail schedules, bus routes and commuter advisories.'}, {name: 'Monuments & Memorials', desc: 'Walking tours and night illumination schedules.'}],
-    N: [{name: 'Neighborhood Portals', desc: 'Deep dives into Adams Morgan, Navy Yard, Dupont Circle and more.'}, {name: 'News & Media Outlets', desc: 'Local reporting, investigative journalism and political newsletters.'}],
-    O: [{name: 'Outdoor Recreation', desc: 'Rock Creek Park trails, Potomac River kayaking and cycling paths.'}, {name: 'Office Space Solutions', desc: 'Coworking hubs, executive suites and virtual addresses.'}],
-    P: [{name: 'Politics & Legislation', desc: 'Bill trackers, congressional schedules and advocacy groups.'}, {name: 'Performing Arts', desc: 'Ballet, opera, symphony orchestras and theater troupes.'}],
-    Q: [{name: 'Quarterly Market Reports', desc: 'Real estate investment trends and housing market forecasts.'}, {name: 'Quebec Government Office', desc: 'Trade delegations and cultural exchange programs.'}],
-    R: [{name: 'Real Estate Brokerages', desc: 'Top agents specializing in luxury homes and relocation.'}, {name: 'Restaurants & Eateries', desc: 'Comprehensive guide covering all 8 wards of Washington.'}],
-    S: [{name: 'Smithsonian Institution', desc: 'Museum guides, exhibit schedules and ticket reservation tips.'}, {name: 'Sports & Athletics', desc: 'Washington Commanders, Nationals, Capitals, Wizards and Mystics.'}],
-    T: [{name: 'Tourism & Visitor Centers', desc: 'Official travel tips, guided tours and monument passes.'}, {name: 'Think Tanks & Policy', desc: 'Brookings, Heritage, CSIS and geopolitical research institutes.'}],
-    U: [{name: 'Universities & Colleges', desc: 'Georgetown, GWU, American, Howard and Catholic University.'}, {name: 'Urban Planning', desc: 'City development projects, zoning updates and transit expansions.'}],
-    V: [{name: 'Visitor Pass Services', desc: 'Securing White House and Capitol tour passes through congressional offices.'}, {name: 'Veterans Services', desc: 'Memorials, support networks and community organizations.'}],
-    W: [{name: 'Weather & Climate Center', desc: 'Real-time forecasts, seasonal guides and cherry blossom watches.'}, {name: 'White House Briefings', desc: 'Press secretary updates, executive orders and public schedules.'}],
-    X: [{name: 'Exotic Dining & Fusion', desc: 'International culinary experiences from Ethiopian to Salvadoran.'}],
-    Y: [{name: 'Youth Programs & Education', desc: 'After-school enrichment, museums for kids and youth sports leagues.'}],
-    Z: [{name: 'Zoning & Permits', desc: 'D.C. municipal guidelines, business licensing and property development.'}]
+    A: [
+      { name: 'Architectural Digest D.C.', icon: '🏛️', phone: '(202) 555-0142', desc: 'Historic preservation and modern architectural firms.', link: '#' },
+      { name: 'Arts & Theaters Council', icon: '🎭', phone: '(202) 555-0199', desc: 'The Kennedy Center, local galleries and performing arts.', link: '#' }
+    ],
+    B: [
+      { name: 'Boutique Hotels of Georgetown', icon: '🏨', phone: '(202) 555-0128', desc: 'Luxury stays across Georgetown, Dupont Circle and Capitol Hill.', link: '#' },
+      { name: 'Broad Street Wealth Advisors', icon: '💼', phone: '(202) 555-0183', desc: 'Federal credit unions, investment houses and wealth advisory.', link: '#' }
+    ],
+    C: [
+      { name: 'Capitol Hill Insiders Group', icon: '📜', phone: '(202) 555-0111', desc: 'Political consulting, lobbying and legislative tracking groups.', link: '#' },
+      { name: 'Culinary Capital Tours', icon: '🍷', phone: '(202) 555-0177', desc: 'Guided food crawls through Michelin-star districts.', link: '#' }
+    ],
+    D: [
+      { name: 'Diplomatic Services International', icon: '🌐', phone: '(202) 555-0155', desc: 'Foreign embassies, cultural centers and international trade offices.', link: '#' },
+      { name: 'Downtown D.C. Real Estate', icon: '🏡', phone: '(202) 555-0133', desc: 'Commercial leases and luxury residential condominiums.', link: '#' }
+    ],
+    E: [
+      { name: 'Embassy Row Cultural Events', icon: '🌟', phone: '(202) 555-0166', desc: 'Exclusive cultural galas and open-house diplomatic showcases.', link: '#' },
+      { name: 'Education Policy Institute', icon: '🎓', phone: '(202) 555-0144', desc: 'Local universities, think tanks and policy research centers.', link: '#' }
+    ],
+    F: [
+      { name: 'Fine Dining Guide & Reviews', icon: '🍽️', phone: '(202) 555-0192', desc: 'Top-tier culinary experiences, wine bars and tasting menus.', link: '#' },
+      { name: 'Federal GovCon Network', icon: '🤝', phone: '(202) 555-0120', desc: 'GovCon networking, procurement assistance and legal support.', link: '#' }
+    ],
+    G: [
+      { name: 'Georgetown Luxury Living', icon: '🏘️', phone: '(202) 555-0109', desc: 'Historic rowhouse listings, shopping guides and waterfront dining.', link: '#' },
+      { name: 'Government Agency Directory', icon: '🏛️', phone: '(202) 555-0100', desc: 'Federal directories, visitor centers and public services.', link: '#' }
+    ],
+    H: [
+      { name: 'Historic Sites & Museums Hub', icon: '🏛️', phone: '(202) 555-0188', desc: 'Smithsonian institutions, memorials and national parks.', link: '#' },
+      { name: 'Healthcare & Medical Network', icon: '🏥', phone: '(202) 555-0164', desc: 'MedStar, GW Hospital and specialized medical networks.', link: '#' }
+    ],
+    I: [
+      { name: 'International Press Club', icon: '📰', phone: '(202) 555-0139', desc: 'Foreign correspondent bureaus, media clubs and press passes.', link: '#' },
+      { name: 'Interior Design Studio D.C.', icon: '🛋️', phone: '(202) 555-0171', desc: 'High-end antique dealers and bespoke home styling studios.', link: '#' }
+    ],
+    J: [
+      { name: 'Judiciary & Federal Law Group', icon: '⚖️', phone: '(202) 555-0125', desc: 'Supreme Court info, federal courts and top-tier litigation firms.', link: '#' },
+      { name: 'Jazz Alley Live Lounge', icon: '🎷', phone: '(202) 555-0186', desc: 'Historic jazz clubs, lounges and live entertainment venues.', link: '#' }
+    ],
+    K: [
+      { name: 'Key Real Estate Brokerage', icon: '🔑', phone: '(202) 555-0190', desc: 'Exclusive residential properties across the D.C. metro area.', link: '#' },
+      { name: 'Korean Culture Center D.C.', icon: '🎨', phone: '(202) 555-0158', desc: 'Exhibitions, culinary classes and cultural events.', link: '#' }
+    ],
+    L: [
+      { name: 'Library of Congress Support', icon: '📚', phone: '(202) 555-0115', desc: 'Library of Congress, National Archives and public libraries.', link: '#' },
+      { name: 'Luxury Executive Transport', icon: '🚙', phone: '(202) 555-0149', desc: 'Chauffeur services, private car rentals and executive transit.', link: '#' }
+    ],
+    M: [
+      { name: 'Metro & Commuter Transit Guide', icon: '🚇', phone: '(202) 555-0130', desc: 'WMATA rail schedules, bus routes and commuter advisories.', link: '#' },
+      { name: 'Monuments Night Tour Service', icon: '✨', phone: '(202) 555-0174', desc: 'Walking tours and night illumination schedules.', link: '#' }
+    ],
+    N: [
+      { name: 'Neighborhood Living Portals', icon: '🌆', phone: '(202) 555-0161', desc: 'Deep dives into Adams Morgan, Navy Yard, Dupont Circle and more.', link: '#' },
+      { name: 'National News & Media Bureau', icon: '🎙️', phone: '(202) 555-0195', desc: 'Local reporting, investigative journalism and political newsletters.', link: '#' }
+    ],
+    O: [
+      { name: 'Outdoor Recreation & Trails', icon: '🌳', phone: '(202) 555-0118', desc: 'Rock Creek Park trails, Potomac River kayaking and cycling paths.', link: '#' },
+      { name: 'Office Suites & Coworking Hub', icon: '🏢', phone: '(202) 555-0182', desc: 'Coworking hubs, executive suites and virtual addresses.', link: '#' }
+    ],
+    P: [
+      { name: 'Political Legislation Tracker', icon: '📊', phone: '(202) 555-0122', desc: 'Bill trackers, congressional schedules and advocacy groups.', link: '#' },
+      { name: 'Performing Arts Center', icon: '🎼', phone: '(202) 555-0168', desc: 'Ballet, opera, symphony orchestras and theater troupes.', link: '#' }
+    ],
+    Q: [
+      { name: 'Quarterly Market Research Firm', icon: '📈', phone: '(202) 555-0114', desc: 'Real estate investment trends and housing market forecasts.', link: '#' },
+      { name: 'Quebec Government Delegation', icon: '🍁', phone: '(202) 555-0140', desc: 'Trade delegations and cultural exchange programs.', link: '#' }
+    ],
+    R: [
+      { name: 'Prime Real Estate Group', icon: '🏡', phone: '(202) 555-0189', desc: 'Top agents specializing in luxury homes and relocation.', link: '#' },
+      { name: 'Restaurateurs Association D.C.', icon: '🍲', phone: '(202) 555-0153', desc: 'Comprehensive guide covering all 8 wards of Washington.', link: '#' }
+    ],
+    S: [
+      { name: 'Smithsonian Visitor Services', icon: '🏛️', phone: '(202) 555-0105', desc: 'Museum guides, exhibit schedules and ticket reservation tips.', link: '#' },
+      { name: 'Capital Sports & Stadiums', icon: '🏟️', phone: '(202) 555-0179', desc: 'Washington Commanders, Nationals, Capitals, Wizards and Mystics.', link: '#' }
+    ],
+    T: [
+      { name: 'D.C. Tourism Bureau', icon: '🗺️', phone: '(202) 555-0127', desc: 'Official travel tips, guided tours and monument passes.', link: '#' },
+      { name: 'Think Tank Policy Institute', icon: '💡', phone: '(202) 555-0191', desc: 'Brookings, Heritage, CSIS and geopolitical research institutes.', link: '#' }
+    ],
+    U: [
+      { name: 'Universities Consortium D.C.', icon: '🎓', phone: '(202) 555-0163', desc: 'Georgetown, GWU, American, Howard and Catholic University.', link: '#' },
+      { name: 'Urban Planning & Zoning Board', icon: '📐', phone: '(202) 555-0137', desc: 'City development projects, zoning updates and transit expansions.', link: '#' }
+    ],
+    V: [
+      { name: 'Visitor Pass Concierge', icon: '🎫', phone: '(202) 555-0112', desc: 'Securing White House and Capitol tour passes through congressional offices.', link: '#' },
+      { name: 'Veterans Memorial Network', icon: '🎖️', phone: '(202) 555-0184', desc: 'Memorials, support networks and community organizations.', link: '#' }
+    ],
+    W: [
+      { name: 'Weather & Climate Center D.C.', icon: '⛅', phone: '(202) 555-0148', desc: 'Real-time forecasts, seasonal guides and cherry blossom watches.', link: '#' },
+      { name: 'White House Press Office', icon: '🏛️', phone: '(202) 555-0101', desc: 'Press secretary updates, executive orders and public schedules.', link: '#' }
+    ],
+    X: [
+      { name: 'Exotic Fusion Dining Club', icon: '🌶️', phone: '(202) 555-0176', desc: 'International culinary experiences from Ethiopian to Salvadoran.', link: '#' }
+    ],
+    Y: [
+      { name: 'Youth Enrichment & Museums', icon: '🎈', phone: '(202) 555-0159', desc: 'After-school enrichment, museums for kids and youth sports leagues.', link: '#' }
+    ],
+    Z: [
+      { name: 'Zoning & Business Permits Office', icon: '📋', phone: '(202) 555-0198', desc: 'D.C. municipal guidelines, business licensing and property development.', link: '#' }
+    ]
   };
 
   const azFilter = document.getElementById('azFilter');
-  const directoryList = document.getElementById('directoryList');
+  const directoryGrid = document.getElementById('directoryGrid');
 
   Object.keys(directoryData).forEach((letter, index) => {
     const btn = document.createElement('div');
@@ -308,17 +427,27 @@
   });
 
   function renderDirectory(letter) {
-    directoryList.innerHTML = '';
-    const items = directoryData[letter] || [{name: 'Coming Soon', desc: 'Listings for this letter are currently expanding.'}];
+    directoryGrid.innerHTML = '';
+    const items = directoryData[letter] || [{ name: 'Coming Soon', icon: '⏳', phone: '(202) 555-0000', desc: 'Listings for this letter are currently expanding.', link: '#' }];
+    
     items.forEach(item => {
-      const div = document.createElement('div');
-      div.className = 'directory-item';
-      div.innerHTML = `<strong>${item.name}</strong>${item.desc}`;
-      directoryList.appendChild(div);
+      const card = document.createElement('div');
+      card.className = 'directory-card';
+      card.innerHTML = `
+        <div class="directory-img">${item.icon}</div>
+        <div class="directory-content">
+          <div>
+            <div class="directory-title">${item.name}</div>
+            <div class="directory-meta">📞 ${item.phone}</div>
+            <div class="directory-desc">${item.desc}</div>
+          </div>
+          <a href="${item.link}" class="directory-btn" onclick="alert('Opening official website for ${item.name}...'); return false;">🌐 Visit Official Website ↗</a>
+        </div>
+      `;
+      directoryGrid.appendChild(card);
     });
   }
 
-  // Initial load
   renderDirectory('A');
 </script>
 
