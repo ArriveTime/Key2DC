@@ -54,8 +54,7 @@
     backdrop-filter: blur(16px); border-bottom: 1px solid var(--border);
     position: sticky; top: 0; z-index: 1000;
   }
-  /* Letters moved closer together (-0.5px spacing) */
-  .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 800; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 6px; letter-spacing: -0.5px; }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 800; color: var(--gold); text-decoration: none; display: flex; align-items: center; gap: 6px; letter-spacing: -0.5px; }
   .nav-logo span { color: var(--gold); }
   
   .nav-links { display: flex; gap: 16px; list-style: none; align-items: center; flex-wrap: wrap; }
@@ -72,11 +71,6 @@
                 radial-gradient(circle at 50% 20%, rgba(212,175,55,0.08), transparent 60%);
     border-bottom: 1px solid var(--border);
   }
-  .hero-branding-tag {
-    display: inline-flex; align-items: center; gap: 8px; font-family: 'Playfair Display', serif;
-    font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 12px;
-    background: rgba(212,175,55,0.08); border: 1px solid var(--border); padding: 6px 16px; border-radius: 30px;
-  }
   .hero-badge {
     display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px;
     background: rgba(212,175,55,0.1); border: 1px solid var(--border);
@@ -86,8 +80,30 @@
   .hero h1 {
     font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5vw, 4.2rem);
     font-weight: 800; line-height: 1.15; margin-bottom: 14px;
-    background: linear-gradient(135deg, #fff 40%, var(--gold-light));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    color: #fff;
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+  }
+  .hero h1 span.gold-brand-line {
+    background: linear-gradient(135deg, #fff 0%, #f3e5ab 40%, #d4af37 70%, #997815 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    font-size: clamp(2.2rem, 5vw, 4.2rem);
+  }
+  .hero h1 span.domain-subtitle {
+    color: #fff;
+    display: block;
+    font-size: clamp(2.2rem, 5vw, 4.2rem);
+    font-weight: 800;
+  }
+  .hero-gold-key {
+    display: inline-block;
+    height: 0.85em;
+    width: auto;
+    vertical-align: middle;
+    filter: drop-shadow(0 2px 4px rgba(212,175,55,0.4));
   }
   .hero p { color: var(--muted); font-size: 1rem; max-width: 620px; margin: 0 auto 24px; line-height: 1.6; }
 
@@ -290,7 +306,7 @@
 
   <!-- NAVIGATION -->
   <nav class="navbar">
-    <a href="#" class="nav-logo">🏛️ Key<span>To</span>DC.com</a>
+    <a href="#" class="nav-logo">KeyToDC.com</a>
     <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
     <ul class="nav-links" id="navLinks">
       <li><a href="#hub" onclick="closeMobileMenu()">Hubs</a></li>
@@ -305,9 +321,14 @@
 
   <!-- HERO SECTION -->
   <header class="hero">
-    <div class="hero-branding-tag">🔑 KeyToDC.com</div>
-    <div class="hero-badge">✦ The Ultimate Washington, D.C. Super-Portal ✦</div>
-    <h1>Your Key to Washington, D.C.</h1>
+    <div class="hero-badge">The Ultimate Washington, D.C. Super-Portal</div>
+    <h1>
+      <span class="gold-brand-line">
+        KeyToDC.com
+        <img src="https://images.unsplash.com/photo-1582139329536-e7284fece509?auto=format&fit=crop&w=120&q=80" alt="Gold Key" class="hero-gold-key" crossorigin="anonymous">
+      </span>
+      <span class="domain-subtitle">Your Key to Washington, D.C.</span>
+    </h1>
     <p>The definitive gateway connecting you to world-class real estate, power politics, breaking news, elite dining, historic monuments, and comprehensive capital travel resources.</p>
   </header>
 
@@ -326,31 +347,89 @@
         <h3>Food Critic's Corner</h3>
         <p>Michelin-starred restaurant directories, power-dining reviews, and direct links to elite capital culinary tables.</p>
       </a>
-      <div class="portal-card" onclick="alert('Navigating to Real Estate & Neighborhoods...')">
+      <a href="#realEstateSection" class="portal-card">
         <span class="portal-icon">🏡</span>
         <h3>Real Estate</h3>
         <p>Luxury properties, historic townhomes in Georgetown and Capitol Hill, rentals, and market valuation reports.</p>
-      </div>
-      <div class="portal-card" onclick="alert('Navigating to Historic Sites & Tours...')">
+      </a>
+      <a href="#mapSection" class="portal-card">
         <span class="portal-icon">🏛️</span>
         <h3>Monuments & Tours</h3>
         <p>White House visitor guides, U.S. Capitol tours, the complete Smithsonian complex, and national parks.</p>
-      </div>
-      <div class="portal-card" onclick="alert('Navigating to Education & Culture Hub...')">
+      </a>
+      <a href="#educationCultureSection" class="portal-card">
         <span class="portal-icon">🎓</span>
         <h3>Education & Culture</h3>
         <p>Guides to local universities (Georgetown, GWU, AU, Howard), museums, theaters, and performing arts.</p>
-      </div>
-      <div class="portal-card" onclick="alert('Navigating to Weather, Sports & Transit Hub...')">
+      </a>
+      <a href="#travelHub" class="portal-card">
         <span class="portal-icon">🏈</span>
         <h3>Weather, Sports & Transit</h3>
         <p>Live meteorological tracking, stadium schedules for D.C. sports teams, and real-time WMATA transit alerts.</p>
-      </div>
+      </a>
       <a href="#techTools" class="portal-card">
         <span class="portal-icon">⚡</span>
         <h3>Technology Tools</h3>
         <p>Explore cutting-edge digital platforms, real-time arrival systems, and intelligent capital software solutions like ArriveTime.com and 4ETA.com.</p>
       </a>
+    </div>
+
+    <!-- REAL ESTATE DEEP DIVE SECTION -->
+    <div class="travel-hub-section" id="realEstateSection">
+      <h2 class="section-title" style="margin-top:0;"><span>🏡</span> Real Estate & Neighborhoods</h2>
+      <p style="color:var(--muted);font-size:0.88rem;margin-bottom:18px;">Luxury properties, historic townhomes in Georgetown and Capitol Hill, rentals, and market valuation reports.</p>
+      <div class="travel-grid">
+        <div class="travel-item-card" style="background:var(--surface2);">
+          <div>
+            <div class="travel-item-title">Georgetown Historic Townhomes</div>
+            <div class="travel-item-desc">Exquisite federal-period architecture, cobblestone streets, and premier luxury estates in D.C.'s most storied neighborhood.</div>
+          </div>
+          <a href="#contact" class="travel-link-btn" style="margin-top:14px;">Inquire on Listings ↗</a>
+        </div>
+        <div class="travel-item-card" style="background:var(--surface2);">
+          <div>
+            <div class="travel-item-title">Capitol Hill Residences</div>
+            <div class="travel-item-desc">Prime Victorian townhomes and contemporary urban condos located minutes from the U.S. Capitol.</div>
+          </div>
+          <a href="#contact" class="travel-link-btn" style="margin-top:14px;">View Properties ↗</a>
+        </div>
+        <div class="travel-item-card" style="background:var(--surface2);">
+          <div>
+            <div class="travel-item-title">Market Valuation Reports</div>
+            <div class="travel-item-desc">Comprehensive quarterly data analytics covering D.C. luxury property trends, appraisals, and investment yields.</div>
+          </div>
+          <a href="#contact" class="travel-link-btn" style="margin-top:14px;">Request Report ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- EDUCATION & CULTURE DEEP DIVE SECTION -->
+    <div class="travel-hub-section" id="educationCultureSection">
+      <h2 class="section-title" style="margin-top:0;"><span>🎓</span> Education & Culture Hub</h2>
+      <p style="color:var(--muted);font-size:0.88rem;margin-bottom:18px;">Guides to local universities (Georgetown, GWU, AU, Howard), museums, theaters, and performing arts.</p>
+      <div class="travel-grid">
+        <div class="travel-item-card" style="background:var(--surface2);">
+          <div>
+            <div class="travel-item-title">Georgetown University & GWU</div>
+            <div class="travel-item-desc">Academic excellence, campus visitor guides, and cultural events at D.C.'s premier institutions.</div>
+          </div>
+          <a href="https://www.georgetown.edu" class="travel-link-btn" target="_blank" style="margin-top:14px;">Georgetown Portal ↗</a>
+        </div>
+        <div class="travel-item-card" style="background:var(--surface2);">
+          <div>
+            <div class="travel-item-title">American University & Howard</div>
+            <div class="travel-item-desc">Explore historic campuses, lecture series, and vibrant student communities across the capital.</div>
+          </div>
+          <a href="https://www.american.edu" class="travel-link-btn" target="_blank" style="margin-top:14px;">AU Portal ↗</a>
+        </div>
+        <div class="travel-item-card" style="background:var(--surface2);">
+          <div>
+            <div class="travel-item-title">Smithsonian Museums & Theaters</div>
+            <div class="travel-item-desc">World-class galleries, performing arts at the Kennedy Center, and historic district theaters.</div>
+          </div>
+          <a href="https://www.si.edu" class="travel-link-btn" target="_blank" style="margin-top:14px;">Smithsonian Guide ↗</a>
+        </div>
+      </div>
     </div>
 
     <!-- TRAVEL DIRECTORY & LIVE FLIGHT BOARDS -->
@@ -455,7 +534,7 @@
     </div>
 
     <!-- INTERACTIVE MAP & EXPLORER -->
-    <h2 class="section-title" id="mapSection"><span>05.</span> Interactive D.C. Command Map</h2>
+    <h2 class="section-title" id="mapSection"><span>05.</span> Interactive D.C. Command Map & Monuments</h2>
     <div class="map-dashboard">
       <div id="map"></div>
       <div class="map-sidebar">
@@ -535,296 +614,178 @@
     document.getElementById('navLinks').classList.remove('mobile-open');
   }
 
-  // ── LIVE CLOCK UPDATE ──
-  setInterval(() => {
+  // ── LIVE CLOCK & TICKER DATA SIMULATOR ──
+  function updateClock() {
     const now = new Date();
-    document.getElementById('dcTime').textContent = now.toLocaleTimeString('en-US', { timeZone: 'America/New_York' }) + ' EDT';
-  }, 1000);
-
-  // ── INDEPENDENT ROTATING NEWS & TRAFFIC FEEDS ──
-  const trafficAlerts = [
-    { title: "🚗 Traffic Advisory: I-395 inbound approaching the 14th Street Bridge experiencing heavy residual delays.", link: "#" },
-    { title: "🚇 WMATA Metro Alert: Red Line trains operating on regular schedule; minor crowding reported at Union Station.", link: "#" },
-    { title: "🚙 Roadwork Notice: Constitution Ave NW single-lane closure near 15th St for utility maintenance.", link: "#" },
-    { title: "🚗 Bridge Update: Memorial Bridge moving smoothly in both directions with normal commuter volume.", link: "#" },
-    { title: "🚇 Metrobus Alert: Routes 30N and 30S running with minor delays due to downtown congestion.", link: "#" }
-  ];
-
-  async function initTickers() {
-    let newsItems = [];
-    try {
-      const response = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://www.washingtontimes.com/rss/headlines/news/politics/');
-      const data = await response.json();
-      if (data && data.items && data.items.length > 0) {
-        newsItems = data.items.map(item => ({ title: `🗞️ ${item.title}`, link: item.link }));
-      }
-    } catch (e) {
-      newsItems = [
-        { title: "🗞️ Capitol Hill Update: Congressional committees review upcoming municipal infrastructure appropriations.", link: "#" },
-        { title: "🗞️ D.C. Policy Brief: Federal agency workspace modernization plans advance to committee vote.", link: "#" },
-        { title: "🗞️ Municipal Policy: District leaders announce new downtown revitalization initiatives.", link: "#" }
-      ];
-    }
-
-    let newsIndex = 0;
-    let trafficIndex = 0;
-
-    const newsElement = document.getElementById('newsTickerLink');
-    const trafficElement = document.getElementById('trafficTickerLink');
-
-    function rotateNews() {
-      const item = newsItems[newsIndex];
-      newsElement.textContent = item.title;
-      newsElement.href = item.link;
-      newsIndex = (newsIndex + 1) % newsItems.length;
-    }
-
-    function rotateTraffic() {
-      const item = trafficAlerts[trafficIndex];
-      trafficElement.textContent = item.title;
-      trafficElement.href = item.link;
-      trafficIndex = (trafficIndex + 1) % trafficAlerts.length;
-    }
-
-    rotateNews();
-    rotateTraffic();
-
-    setInterval(rotateNews, 6000);
-    setInterval(rotateTraffic, 7500);
+    const timeString = now.toLocaleTimeString('en-US', { timeZone: 'America/New_York' });
+    document.getElementById('dcTime').textContent = timeString + ' EDT';
   }
-  initTickers();
+  setInterval(updateClock, 1000);
+  updateClock();
 
-  // ── TRAVEL DIRECTORY DATA (HOTELS, CARS, AIRLINES) ──
-  const hotelData = [
-    { name: "Marriott Hotels & Resorts", desc: "Global hospitality leader with premier downtown D.C. and suburban properties.", link: "https://www.marriott.com" },
-    { name: "Hilton Hotels & Resorts", desc: "Iconic luxury and full-service business hotels across the capital region.", link: "https://www.hilton.com" },
-    { name: "Hyatt Hotels Corporation", desc: "Modern upscale accommodations located near major transit hubs and government centers.", link: "https://www.hyatt.com" },
-    { name: "IHG Hotels & Resorts (InterContinental)", desc: "World-renowned luxury stays including InterContinental and Kimpton hotels.", link: "https://www.ihg.com" },
-    { name: "Accor Hotels", desc: "Exceptional lifestyle and luxury hospitality brands across D.C.", link: "https://group.accor.com" },
-    { name: "Wyndham Hotels & Resorts", desc: "Comfortable and accessible lodging throughout the metropolitan area.", link: "https://www.wyndhamhotels.com" }
+  // News and Traffic rotation
+  const newsHeadlines = [
+    { title: "Senate Committee Advances Capital Infrastructure & Transit Modernization Bill", url: "#" },
+    { title: "Smithsonian Announces New Interactive Aerospace Exhibit Opening Next Month", url: "#" },
+    { title: "D.C. Mayor's Office Unveils Downtown Revitalization and Smart Mobility Initiative", url: "#" }
+  ];
+  const trafficAlerts = [
+    { title: "I-395 Northbound: Moderate delays near 14th Street Bridge due to volume", url: "#" },
+    { title: "WMATA Metrorail: Red Line operating on normal schedule with minor maintenance", url: "#" },
+    { title: "George Washington Memorial Parkway: Clear conditions reported in both directions", url: "#" }
   ];
 
-  const carData = [
-    { name: "Hertz Rent-a-Car", desc: "Convenient airport pickup at IAD, DCA, and downtown D.C. locations.", link: "https://www.hertz.com" },
-    { name: "Enterprise Rent-A-Car", desc: "Trusted vehicle selection with neighborhood and airport branches.", link: "https://www.enterprise.com" },
-    { name: "Avis Car Rental", desc: "Priority rental service with wide vehicle variety and GPS options.", link: "https://www.avis.com" },
-    { name: "Budget Rent a Car", desc: "Economical fleet choices for business travel and family excursions.", link: "https://www.budget.com" },
-    { name: "National Car Rental", desc: "Streamlined Emerald Aisle service for frequent business flyers.", link: "https://www.nationalcar.com" },
-    { name: "Alamo Rent A Car", desc: "Affordable vacation and commuter rental packages.", link: "https://www.alamo.com" }
+  let tickerIndex = 0;
+  function updateTickers() {
+    const news = newsHeadlines[tickerIndex % newsHeadlines.length];
+    const traffic = trafficAlerts[tickerIndex % trafficAlerts.length];
+    
+    const newsEl = document.getElementById('newsTickerLink');
+    newsEl.textContent = news.title;
+    newsEl.href = news.url;
+
+    const trafficEl = document.getElementById('trafficTickerLink');
+    trafficEl.textContent = traffic.title;
+    trafficEl.href = traffic.url;
+
+    tickerIndex++;
+  }
+  setInterval(updateTickers, 6000);
+  updateTickers();
+
+  // ── TRAVEL TABS & DIRECTORY DATA ──
+  function switchTravelTab(tabId) {
+    document.querySelectorAll('.travel-tab-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.travel-panel').forEach(panel => panel.classList.remove('active'));
+    
+    event.currentTarget.classList.add('active');
+    document.getElementById('panel-' + tabId).classList.add('active');
+  }
+
+  const hotelsData = [
+    { name: "The Hay-Adams", desc: "Historic luxury hotel overlooking the White House with legendary dining.", url: "https://www.hayadams.com" },
+    { name: "The Willard InterContinental", desc: "Iconic luxury property hosting presidents and world leaders since 1850.", url: "https://washington.intercontinental.com" },
+    { name: "The Ritz-Carlton, Washington, D.C.", desc: "Five-star elegance located in the vibrant West End neighborhood.", url: "https://www.ritzcarlton.com" },
+    { name: "Four Seasons Hotel Washington D.C.", desc: "Premier Georgetown luxury retreat featuring elite service and fine dining.", url: "https://www.fourseasons.com/washington" }
   ];
 
-  const airlineData = [
-    { name: "American Airlines", desc: "Major hub carrier at Ronald Reagan Washington National Airport (DCA).", link: "https://www.aa.com" },
-    { name: "United Airlines", desc: "Major international hub carrier operating out of Washington Dulles (IAD).", link: "https://www.united.com" },
-    { name: "Delta Air Lines", desc: "Extensive domestic and global connections across D.C. airports.", link: "https://www.delta.com" },
-    { name: "Southwest Airlines", desc: "Frequent low-fare connections serving the greater D.C. area.", link: "https://www.southwest.com" },
-    { name: "JetBlue Airways", desc: "Comfortable mid-flight service with dedicated terminals at DCA and IAD.", link: "https://www.jetblue.com" },
-    { name: "British Airways", desc: "Daily transatlantic international service connecting London Heathrow to IAD.", link: "https://www.britishairways.com" },
-    { name: "Lufthansa", desc: "Major European carrier connecting Frankfurt/Munich directly to Washington Dulles.", link: "https://www.lufthansa.com" },
-    { name: "Air France", desc: "Connecting Paris Charles de Gaulle directly to the capital region.", link: "https://www.airfrance.com" }
+  const carsData = [
+    { name: "Hertz Car Rental — DCA Airport", desc: "Convenient terminal pickup for premium sedans, SUVs, and electric vehicles.", url: "https://www.hertz.com" },
+    { name: "Enterprise Rent-A-Car — Downtown", desc: "Reliable fleet options across multiple convenient downtown D.C. locations.", url: "https://www.enterprise.com" },
+    { name: "Avis Car Rental — Dulles (IAD)", desc: "Quick airport counter access with priority loyalty vehicle selection.", url: "https://www.avis.com" },
+    { name: "National Car Rental — Union Station", desc: "Seamless rail-to-road transitions right at Washington's historic transit hub.", url: "https://www.nationalcar.com" }
+  ];
+
+  const airlinesData = [
+    { name: "United Airlines (IAD Hub)", desc: "Major global carrier connecting Dulles International to worldwide destinations.", url: "https://www.united.com" },
+    { name: "American Airlines (DCA Hub)", desc: "Frequent shuttle and domestic connections out of Reagan National.", url: "https://www.aa.com" },
+    { name: "Delta Air Lines", desc: "Extensive network connectivity across all major domestic and international hubs.", url: "https://www.delta.com" },
+    { name: "JetBlue Airways", desc: "Comfortable passenger service with award-winning legroom and amenities.", url: "https://www.jetblue.com" }
   ];
 
   function renderTravelDirectories() {
-    const hGrid = document.getElementById('hotelGrid');
-    const cGrid = document.getElementById('carGrid');
-    const aGrid = document.getElementById('airlineGrid');
-
-    hGrid.innerHTML = hotelData.map(h => `
+    document.getElementById('hotelGrid').innerHTML = hotelsData.map(h => `
       <div class="travel-item-card">
         <div>
           <div class="travel-item-title">${h.name}</div>
           <div class="travel-item-desc">${h.desc}</div>
         </div>
-        <a href="${h.link}" class="travel-link-btn" target="_blank">🌐 Official Website ↗</a>
+        <a href="${h.url}" class="travel-link-btn" target="_blank">Visit Website ↗</a>
       </div>
     `).join('');
 
-    cGrid.innerHTML = carData.map(c => `
+    document.getElementById('carGrid').innerHTML = carsData.map(c => `
       <div class="travel-item-card">
         <div>
           <div class="travel-item-title">${c.name}</div>
           <div class="travel-item-desc">${c.desc}</div>
         </div>
-        <a href="${c.link}" class="travel-link-btn" target="_blank">🌐 Official Website ↗</a>
+        <a href="${c.url}" class="travel-link-btn" target="_blank">Book Rental ↗</a>
       </div>
     `).join('');
 
-    aGrid.innerHTML = airlineData.map(a => `
+    document.getElementById('airlineGrid').innerHTML = airlinesData.map(a => `
       <div class="travel-item-card">
         <div>
           <div class="travel-item-title">${a.name}</div>
           <div class="travel-item-desc">${a.desc}</div>
         </div>
-        <a href="${a.link}" class="travel-link-btn" target="_blank">🌐 Official Website ↗</a>
+        <a href="${a.url}" class="travel-link-btn" target="_blank">Airline Portal ↗</a>
       </div>
     `).join('');
   }
   renderTravelDirectories();
 
-  function switchTravelTab(tabKey) {
-    document.querySelectorAll('.travel-tab-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.travel-panel').forEach(p => p.classList.remove('active'));
-
-    event.currentTarget.classList.add('active');
-    document.getElementById(`panel-${tabKey}`).classList.add('active');
-    if(tabKey === 'flights') {
-      renderFlightBoard();
-    }
-  }
-
-  // ── MICHELIN STAR RESTAURANTS DATA ──
-  const michelinData = [
-    { name: "The Inn at Little Washington", stars: "⭐⭐⭐", cuisine: "Contemporary American", desc: "Patrick O'Connell's legendary culinary sanctuary in Virginia hill country offering sublime multi-course epicurean journeys.", link: "https://www.theinnatlittlewashington.com" },
-    { name: "Minibar by José Andrés", stars: "⭐⭐", cuisine: "Avant-Garde / Molecular", desc: "An intimate, 12-seat theatrical dining laboratory pushing the boundaries of taste, texture, and sensory design.", link: "https://www.minibarbyjoseandres.com" },
-    { name: "Pineapple and Pearls", stars: "⭐⭐", cuisine: "Innovative Fine Dining", desc: "A whimsical yet meticulously executed tasting menu experience celebrating unmatched hospitality and flavor pairings.", link: "https://www.pineappleandpearls.com" },
-    { name: "Masseria", stars: "⭐", cuisine: "Coastal Italian", desc: "Nicholas Stefanelli's rustic-luxe tribute to the Adriatic coast tucked away in the vibrant Union Market district.", link: "https://www.masseria-dc.com" },
-    { name: "Kinship", stars: "⭐", cuisine: "Progressive American", desc: "Eric Ziebold's celebration of craft, provenance, and culinary styles across a thoughtfully organized menu format.", link: "https://www.kinshipdc.com" },
-    { name: "El Cielo D.C.", stars: "⭐", cuisine: "Modern Colombian", desc: "Chef Juan Manuel Barrientos merges neuroscience and art to evoke deep emotional resonance through sensory dining.", link: "https://www.elcielorestaurant.com" }
-  ];
-
-  function renderMichelinDirectory() {
-    const grid = document.getElementById('michelinGrid');
-    grid.innerHTML = michelinData.map(m => `
-      <div class="michelin-card">
-        <div>
-          <div class="michelin-stars">${m.stars}</div>
-          <div class="michelin-name">${m.name}</div>
-          <div class="michelin-cuis">${m.cuisine}</div>
-          <div class="michelin-desc">${m.desc}</div>
-        </div>
-        <a href="${m.link}" class="travel-link-btn" target="_blank">🌐 Official Restaurant Website ↗</a>
-      </div>
-    `).join('');
-  }
-  renderMichelinDirectory();
-
-  // ── LIVE FLIGHT STATUS BOARD LOGIC ──
-  const mockFlights = {
-    IAD: {
-      arrivals: [
-        { flight: "UA 921", airline: "United Airlines", originDest: "London Heathrow (LHR)", time: "10:14 AM", gate: "B4", status: "On Time" },
-        { flight: "LH 418", airline: "Lufthansa", originDest: "Frankfurt (FRA)", time: "10:35 AM", gate: "A2", status: "On Time" },
-        { flight: "DL 512", airline: "Delta Air Lines", originDest: "Atlanta (ATL)", time: "10:52 AM", gate: "C12", status: "Delayed" },
-        { flight: "BA 293", airline: "British Airways", originDest: "London Heathrow (LHR)", time: "11:15 AM", gate: "B8", status: "On Time" },
-        { flight: "AF 028", airline: "Air France", originDest: "Paris (CDG)", time: "11:40 AM", gate: "A6", status: "On Time" }
-      ],
-      departures: [
-        { flight: "UA 142", airline: "United Airlines", originDest: "San Francisco (SFO)", time: "10:20 AM", gate: "C19", status: "Boarding" },
-        { flight: "UA 918", airline: "United Airlines", originDest: "Tokyo Narita (NRT)", time: "10:50 AM", gate: "D14", status: "On Time" },
-        { flight: "LH 419", airline: "Lufthansa", originDest: "Frankfurt (FRA)", time: "11:10 AM", gate: "A2", status: "On Time" },
-        { flight: "BA 292", airline: "British Airways", originDest: "London Heathrow (LHR)", time: "11:45 AM", gate: "B8", status: "Delayed" }
-      ]
-    },
-    DCA: {
-      arrivals: [
-        { flight: "AA 214", airline: "American Airlines", originDest: "Dallas/Fort Worth (DFW)", time: "10:10 AM", gate: "35", status: "On Time" },
-        { flight: "DL 1180", airline: "Delta Air Lines", originDest: "New York (LGA)", time: "10:28 AM", gate: "14", status: "On Time" },
-        { flight: "WN 421", airline: "Southwest Airlines", originDest: "Chicago (MDW)", time: "10:55 AM", gate: "22", status: "Boarding" },
-        { flight: "B6 812", airline: "JetBlue Airways", originDest: "Boston (BOS)", time: "11:20 AM", gate: "18", status: "On Time" }
-      ],
-      departures: [
-        { flight: "AA 1832", airline: "American Airlines", originDest: "Miami (MIA)", time: "10:15 AM", gate: "28", status: "On Time" },
-        { flight: "DL 2140", airline: "Delta Air Lines", originDest: "Boston (BOS)", time: "10:45 AM", gate: "12", status: "On Time" },
-        { flight: "UA 382", airline: "United Airlines", originDest: "Chicago (ORD)", time: "11:05 AM", gate: "41", status: "Delayed" }
-      ]
-    }
-  };
-
+  // Flight Board Simulator
   function renderFlightBoard() {
     const airport = document.getElementById('airportFilter').value;
     const boardType = document.getElementById('boardTypeFilter').value;
     const header = document.getElementById('originDestHeader');
     header.textContent = boardType === 'arrivals' ? 'Origin' : 'Destination';
 
-    const list = mockFlights[airport][boardType];
-    const tbody = document.getElementById('flightTableBody');
-    tbody.innerHTML = '';
+    const sampleFlights = [
+      { flight: "UA 1402", airline: "United Airlines", loc: airport === 'IAD' ? "San Francisco (SFO)" : "New York (LGA)", time: "11:45 AM", gate: "B12", status: "ontime" },
+      { flight: "AA 2185", airline: "American Airlines", loc: airport === 'IAD' ? "Chicago (ORD)" : "Boston (BOS)", time: "12:10 PM", gate: "C4", status: "boarding" },
+      { flight: "DL 914", airline: "Delta Air Lines", loc: airport === 'IAD' ? "Atlanta (ATL)" : "Miami (MIA)", time: "12:35 PM", gate: "A8", status: "delayed" },
+      { flight: "B6 409", airline: "JetBlue Airways", loc: airport === 'IAD' ? "Los Angeles (LAX)" : "San Juan (SJU)", time: "1:05 PM", gate: "D2", status: "ontime" },
+      { flight: "UA 890", airline: "United Airlines", loc: airport === 'IAD' ? "London (LHR)" : "Chicago (ORD)", time: "1:40 PM", gate: "B19", status: "ontime" }
+    ];
 
-    list.forEach(f => {
-      let statusClass = 'status-ontime';
-      if(f.status === 'Delayed') statusClass = 'status-delayed';
-      if(f.status === 'Boarding') statusClass = 'status-boarding';
-
-      const row = document.createElement('tr');
-      row.innerHTML = `
+    document.getElementById('flightTableBody').innerHTML = sampleFlights.map(f => `
+      <tr>
         <td style="font-weight:700;color:var(--gold);">${f.flight}</td>
         <td>${f.airline}</td>
-        <td>${f.originDest}</td>
+        <td>${f.loc}</td>
         <td>${f.time}</td>
-        <td>Gate ${f.gate}</td>
-        <td><span class="status-badge ${statusClass}">${f.status}</span></td>
-      `;
-      tbody.appendChild(row);
-    });
+        <td>${f.gate}</td>
+        <td><span class="status-badge status-${f.status}">${f.status.toUpperCase()}</span></td>
+      </tr>
+    `).join('');
   }
+  renderFlightBoard();
 
-  // ── VISITOR COUNTER & IP GEOLOCATION ──
-  async function trackVisitor() {
-    try {
-      const res = await fetch('https://ipapi.co/json/');
-      const data = await res.json();
-      
-      const now = new Date();
-      const dateStr = now.toLocaleDateString();
-      const dayStr = now.toLocaleDateString('en-US', { weekday: 'short' });
-      const timeStr = now.toLocaleTimeString();
-      const city = data.city || 'Unknown City';
-      const region = data.region || 'Unknown State';
-      const ip = data.ip || '127.0.0.1';
-
-      let visitors = JSON.parse(localStorage.getItem('keytodc_visitors') || '[]');
-      
-      const lastVisitor = visitors[visitors.length - 1];
-      if (!lastVisitor || lastVisitor.ip !== ip || (Date.now() - lastVisitor.timestamp > 300000)) {
-        visitors.push({ date: dateStr, day: dayStr, time: timeStr, city: city, state: region, ip: ip, timestamp: Date.now() });
-        localStorage.setItem('keytodc_visitors', JSON.stringify(visitors));
-      }
-    } catch (err) {
-      let visitors = JSON.parse(localStorage.getItem('keytodc_visitors') || '[]');
-      const now = new Date();
-      visitors.push({ date: now.toLocaleDateString(), day: now.toLocaleDateString('en-US', { weekday: 'short' }), time: now.toLocaleTimeString(), city: 'Washington', state: 'DC', ip: 'Direct Visit', timestamp: Date.now() });
-      localStorage.setItem('keytodc_visitors', JSON.stringify(visitors));
-    }
-  }
-  trackVisitor();
-
-  function openAdminModal() {
-    const password = prompt("Enter Admin Password:");
-    if (password === "keytodc2026") {
-      const visitors = JSON.parse(localStorage.getItem('keytodc_visitors') || '[]');
-      const tbody = document.getElementById('visitorLogBody');
-      tbody.innerHTML = '';
-      
-      if(visitors.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--muted);">No visitor logs recorded yet.</td></tr>';
-      } else {
-        visitors.reverse().forEach(v => {
-          const row = document.createElement('tr');
-          row.innerHTML = `<td>${v.date}</td><td>${v.day}</td><td>${v.time}</td><td>${v.city}</td><td>${v.state}</td><td>${v.ip}</td>`;
-          tbody.appendChild(row);
-        });
-      }
-      document.getElementById('adminModal').style.display = 'grid';
-    } else if (password !== null) {
-      alert("Incorrect password.");
-    }
-  }
-
-  // ── LEAFLET MAP SETUP ──
-  let map = L.map('map', { zoomControl: false }).setView([38.8951, -77.0364], 13);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 }).addTo(map);
-  L.control.zoom({ position: 'bottomright' }).addTo(map);
-
-  const landmarks = [
-    { lat: 38.8977, lng: -77.0365, title: 'The White House', desc: 'Executive Mansion & Presidential Office' },
-    { lat: 38.8899, lng: -77.0091, title: 'U.S. Capitol', desc: 'United States Congress' },
-    { lat: 38.8895, lng: -77.0352, title: 'Washington Monument', desc: 'Historic Obelisk' },
-    { lat: 38.8893, lng: -77.0502, title: 'Lincoln Memorial', desc: 'National Memorial' },
-    { lat: 38.8981, lng: -77.0074, title: 'Union Station', desc: 'Major Transportation & Transit Hub' }
+  // ── MICHELIN RESTAURANTS DATA ──
+  const michelinData = [
+    { stars: "★★★", name: "The Inn at Little Washington", cuis: "American / Tasting Menu", desc: "A culinary sanctuary in Virginia hunt country offering exquisite multi-course masterpieces.", url: "https://www.theinnatlittlewashington.com" },
+    { stars: "★★", name: "Minibar by José Andrés", cuis: "Avant-Garde / Tasting", desc: "An intimate, theatrical 12-seat counter exploring molecular gastronomy and sensory dining.", url: "https://www.minibarbyjoseandres.com" },
+    { stars: "★★", name: "Pineapple and Pearls", cuis: "Contemporary Fine Dining", desc: "Playful yet luxurious tasting menus paired with exceptional hospitality in Capitol Hill.", url: "https://www.pineappleandpearls.com" },
+    { stars: "★", name: "The Dabney", cuis: "Mid-Atlantic Hearth", desc: "Rustic charm meeting refined technique with wood-fired Chesapeake specialties.", url: "https://www.thedabney.com" },
+    { stars: "★", name: "Masseria", cuis: "Coastal Italian", desc: "Transportive Pugliese dining experience set in a stylish, secluded industrial courtyard.", url: "https://www.masseria-dc.com" },
+    { stars: "★", name: "Kith/Kin", cuis: "Caribbean / Coastal", desc: "Vibrant, spice-forward culinary creations celebrating rich diaspora traditions.", url: "#" }
   ];
 
-  landmarks.forEach(l => {
-    L.marker([l.lat, l.lng]).addTo(map).bindPopup(`<b>${l.title}</b><br>${l.desc}`);
+  function renderMichelin() {
+    document.getElementById('michelinGrid').innerHTML = michelinData.map(m => `
+      <div class="michelin-card">
+        <div>
+          <div class="michelin-stars">${m.stars} Michelin Star</div>
+          <div class="michelin-name">${m.name}</div>
+          <div class="michelin-cuis">${m.cuis}</div>
+          <div class="michelin-desc">${m.desc}</div>
+        </div>
+        <a href="${m.url}" class="travel-link-btn" target="_blank">Explore Restaurant ↗</a>
+      </div>
+    `).join('');
+  }
+  renderMichelin();
+
+  // ── LEAFLET MAP INITIALIZATION ──
+  let map = L.map('map').setView([38.8951, -77.0364], 14);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  const markers = [
+    { lat: 38.8977, lng: -77.0365, title: "The White House", desc: "Executive mansion and official workplace of the President." },
+    { lat: 38.8899, lng: -77.0091, title: "U.S. Capitol Building", desc: "Meeting place of the United States Congress." },
+    { lat: 38.8895, lng: -77.0352, title: "Washington Monument", desc: "Obelisk on the National Mall." },
+    { lat: 38.8893, lng: -77.0502, title: "Lincoln Memorial", desc: "American national monument honoring Abraham Lincoln." },
+    { lat: 38.8881, lng: -77.0261, title: "Smithsonian Air & Space Museum", desc: "World-famous historic aviation museum." }
+  ];
+
+  markers.forEach(m => {
+    L.marker([m.lat, m.lng]).addTo(map).bindPopup(`<b>${m.title}</b><br>${m.desc}`);
   });
 
   function focusLandmark(lat, lng, title, desc) {
@@ -832,150 +793,109 @@
     L.popup().setLatLng([lat, lng]).setContent(`<b>${title}</b><br>${desc}`).openOn(map);
   }
 
-  // ── A-Z BUSINESS DIRECTORY DATA ──
-  const directoryData = {
-    A: [
-      { name: 'Architectural Digest D.C.', icon: '🏛️', phone: '(202) 555-0142', desc: 'Historic preservation and modern architectural firms.', link: '#' },
-      { name: 'Arts & Theaters Council', icon: '🎭', phone: '(202) 555-0199', desc: 'The Kennedy Center, local galleries and performing arts.', link: '#' }
-    ],
-    B: [
-      { name: 'Boutique Hotels of Georgetown', icon: '🏨', phone: '(202) 555-0128', desc: 'Luxury stays across Georgetown, Dupont Circle and Capitol Hill.', link: '#' },
-      { name: 'Broad Street Wealth Advisors', icon: '💼', phone: '(202) 555-0183', desc: 'Federal credit unions, investment houses and wealth advisory.', link: '#' }
-    ],
-    C: [
-      { name: 'Capitol Hill Insiders Group', icon: '📜', phone: '(202) 555-0111', desc: 'Political consulting, lobbying and legislative tracking groups.', link: '#' },
-      { name: 'Culinary Capital Tours', icon: '🍷', phone: '(202) 555-0177', desc: 'Guided food crawls through Michelin-star districts.', link: '#' }
-    ],
-    D: [
-      { name: 'Diplomatic Services International', icon: '🌐', phone: '(202) 555-0155', desc: 'Foreign embassies, cultural centers and international trade offices.', link: '#' },
-      { name: 'Downtown D.C. Real Estate', icon: '🏡', phone: '(202) 555-0133', desc: 'Commercial leases and luxury residential condominiums.', link: '#' }
-    ],
-    E: [
-      { name: 'Embassy Row Cultural Events', icon: '🌟', phone: '(202) 555-0166', desc: 'Exclusive cultural galas and open-house diplomatic showcases.', link: '#' },
-      { name: 'Education Policy Institute', icon: '🎓', phone: '(202) 555-0144', desc: 'Local universities, think tanks and policy research centers.', link: '#' }
-    ],
-    F: [
-      { name: 'Fine Dining Guide & Reviews', icon: '🍽️', phone: '(202) 555-0192', desc: 'Top-tier culinary experiences, wine bars and tasting menus.', link: '#' },
-      { name: 'Federal GovCon Network', icon: '🤝', phone: '(202) 555-0120', desc: 'GovCon networking, procurement assistance and legal support.', link: '#' }
-    ],
-    G: [
-      { name: 'Georgetown Luxury Living', icon: '🏘️', phone: '(202) 555-0109', desc: 'Historic rowhouse listings, shopping guides and waterfront dining.', link: '#' },
-      { name: 'Government Agency Directory', icon: '🏛️', phone: '(202) 555-0100', desc: 'Federal directories, visitor centers and public services.', link: '#' }
-    ],
-    H: [
-      { name: 'Historic Sites & Museums Hub', icon: '🏛️', phone: '(202) 555-0188', desc: 'Smithsonian institutions, memorials and national parks.', link: '#' },
-      { name: 'Healthcare & Medical Network', icon: '🏥', phone: '(202) 555-0164', desc: 'MedStar, GW Hospital and specialized medical networks.', link: '#' }
-    ],
-    I: [
-      { name: 'International Press Club', icon: '📰', phone: '(202) 555-0139', desc: 'Foreign correspondent bureaus, media clubs and press passes.', link: '#' },
-      { name: 'Interior Design Studio D.C.', icon: '🛋️', phone: '(202) 555-0171', desc: 'High-end antique dealers and bespoke home styling studios.', link: '#' }
-    ],
-    J: [
-      { name: 'Judiciary & Federal Law Group', icon: '⚖️', phone: '(202) 555-0125', desc: 'Supreme Court info, federal courts and top-tier litigation firms.', link: '#' },
-      { name: 'Jazz Alley Live Lounge', icon: '🎷', phone: '(202) 555-0186', desc: 'Historic jazz clubs, lounges and live entertainment venues.', link: '#' }
-    ],
-    K: [
-      { name: 'Key Real Estate Brokerage', icon: '🔑', phone: '(202) 555-0190', desc: 'Exclusive residential properties across the D.C. metro area.', link: '#' },
-      { name: 'Korean Culture Center D.C.', icon: '🎨', phone: '(202) 555-0158', desc: 'Exhibitions, culinary classes and cultural events.', link: '#' }
-    ],
-    L: [
-      { name: 'Library of Congress Support', icon: '📚', phone: '(202) 555-0115', desc: 'Library of Congress, National Archives and public libraries.', link: '#' },
-      { name: 'Luxury Executive Transport', icon: '🚙', phone: '(202) 555-0149', desc: 'Chauffeur services, private car rentals and executive transit.', link: '#' }
-    ],
-    M: [
-      { name: 'Metro & Commuter Transit Guide', icon: '🚇', phone: '(202) 555-0130', desc: 'WMATA rail schedules, bus routes and commuter advisories.', link: '#' },
-      { name: 'Monuments Night Tour Service', icon: '✨', phone: '(202) 555-0174', desc: 'Walking tours and night illumination schedules.', link: '#' }
-    ],
-    N: [
-      { name: 'Neighborhood Living Portals', icon: '🌆', phone: '(202) 555-0161', desc: 'Deep dives into Adams Morgan, Navy Yard, Dupont Circle and more.', link: '#' },
-      { name: 'National News & Media Bureau', icon: '🎙️', phone: '(202) 555-0195', desc: 'Local reporting, investigative journalism and political newsletters.', link: '#' }
-    ],
-    O: [
-      { name: 'Outdoor Recreation & Trails', icon: '🌳', phone: '(202) 555-0118', desc: 'Rock Creek Park trails, Potomac River kayaking and cycling paths.', link: '#' },
-      { name: 'Office Suites & Coworking Hub', icon: '🏢', phone: '(202) 555-0182', desc: 'Coworking hubs, executive suites and virtual addresses.', link: '#' }
-    ],
-    P: [
-      { name: 'Political Legislation Tracker', icon: '📊', phone: '(202) 555-0122', desc: 'Bill trackers, congressional schedules and advocacy groups.', link: '#' },
-      { name: 'Performing Arts Center', icon: '🎼', phone: '(202) 555-0168', desc: 'Ballet, opera, symphony orchestras and theater troupes.', link: '#' }
-    ],
-    Q: [
-      { name: 'Quarterly Market Research Firm', icon: '📈', phone: '(202) 555-0114', desc: 'Real estate investment trends and housing market forecasts.', link: '#' },
-      { name: 'Quebec Government Delegation', icon: '🍁', phone: '(202) 555-0140', desc: 'Trade delegations and cultural exchange programs.', link: '#' }
-    ],
-    R: [
-      { name: 'Prime Real Estate Group', icon: '🏡', phone: '(202) 555-0189', desc: 'Top agents specializing in luxury homes and relocation.', link: '#' },
-      { name: 'Restaurateurs Association D.C.', icon: '🍲', phone: '(202) 555-0153', desc: 'Comprehensive guide covering all 8 wards of Washington.', link: '#' }
-    ],
-    S: [
-      { name: 'Smithsonian Visitor Services', icon: '🏛️', phone: '(202) 555-0105', desc: 'Museum guides, exhibit schedules and ticket reservation tips.', link: '#' },
-      { name: 'Capital Sports & Stadiums', icon: '🏟️', phone: '(202) 555-0179', desc: 'Washington Commanders, Nationals, Capitals, Wizards and Mystics.', link: '#' }
-    ],
-    T: [
-      { name: 'D.C. Tourism Bureau', icon: '🗺️', phone: '(202) 555-0127', desc: 'Official travel tips, guided tours and monument passes.', link: '#' },
-      { name: 'Think Tank Policy Institute', icon: '💡', phone: '(202) 555-0191', desc: 'Brookings, Heritage, CSIS and geopolitical research institutes.', link: '#' }
-    ],
-    U: [
-      { name: 'Universities Consortium D.C.', icon: '🎓', phone: '(202) 555-0163', desc: 'Georgetown, GWU, American, Howard and Catholic University.', link: '#' },
-      { name: 'Urban Planning & Zoning Board', icon: '📐', phone: '(202) 555-0137', desc: 'City development projects, zoning updates and transit expansions.', link: '#' }
-    ],
-    V: [
-      { name: 'Visitor Pass Concierge', icon: '🎫', phone: '(202) 555-0112', desc: 'Securing White House and Capitol tour passes through congressional offices.', link: '#' },
-      { name: 'Veterans Memorial Network', icon: '🎖️', phone: '(202) 555-0184', desc: 'Memorials, support networks and community organizations.', link: '#' }
-    ],
-    W: [
-      { name: 'Weather & Climate Center D.C.', icon: '⛅', phone: '(202) 555-0148', desc: 'Real-time forecasts, seasonal guides and cherry blossom watches.', link: '#' },
-      { name: 'White House Press Office', icon: '🏛️', phone: '(202) 555-0101', desc: 'Press secretary updates, executive orders and public schedules.', link: '#' }
-    ],
-    X: [
-      { name: 'Exotic Fusion Dining Club', icon: '🌶️', phone: '(202) 555-0176', desc: 'International culinary experiences from Ethiopian to Salvadoran.', link: '#' }
-    ],
-    Y: [
-      { name: 'Youth Enrichment & Museums', icon: '🎈', phone: '(202) 555-0159', desc: 'After-school enrichment, museums for kids and youth sports leagues.', link: '#' }
-    ],
-    Z: [
-      { name: 'Zoning & Business Permits Office', icon: '📋', phone: '(202) 555-0198', desc: 'D.C. municipal guidelines, business licensing and property development.', link: '#' }
-    ]
-  };
+  // ── A-Z DIRECTORY DATA & FILTER ──
+  const directoryData = [
+    { name: "American Red Cross National HQ", cat: "Non-Profit & Community", phone: "(202) 303-4498", desc: "National headquarters supporting humanitarian relief and disaster response.", url: "https://www.redcross.org", letter: "A" },
+    { name: "Bluejacket Brewery", cat: "Dining & Craft Beverages", phone: "(202) 524-4899", desc: " Expansive Navy Yard artisanal brewery crafting small-batch beers.", url: "https://www.bluejacketdc.com", letter: "B" },
+    { name: "Capital One Arena", cat: "Entertainment & Sports", phone: "(202) 628-3200", desc: "Premier downtown venue hosting major sports events and concert tours.", url: "https://www.capitalonearena.com", letter: "C" },
+    { name: "Decatur House on Lafayette Square", cat: "Historic Sites", phone: "(202) 842-0920", desc: "Historic federal townhouse managed by the White House Historical Association.", url: "https://www.decaturhouse.org", letter: "D" },
+    { name: "Eastern Market", cat: "Shopping & Culture", phone: "(202) 698-5253", desc: "Vibrant historic public market featuring fresh foods, art, and local crafts.", url: "https://easternmarket-dc.org", letter: "E" },
+    { name: "Ford's Theatre", cat: "Arts & Performing Culture", phone: "(202) 347-4833", desc: "Historic working theatre and museum honoring Abraham Lincoln's legacy.", url: "https://www.fords.org", letter: "F" },
+    { name: "Georgetown University", cat: "Education & Research", phone: "(202) 687-0100", desc: "Historic premier research university located in the heart of Georgetown.", url: "https://www.georgetown.edu", letter: "G" },
+    { name: "Hirshhorn Museum and Sculpture Garden", cat: "Museums & Art", phone: "(202) 633-1000", desc: "Smithsonian museum of modern and contemporary art on the National Mall.", url: "https://hirshhorn.si.edu", letter: "H" },
+    { name: "International Spy Museum", cat: "Museums & Attractions", phone: "(202) 654-0990", desc: "Interactive museum dedicated to the espionage profession at L'Enfant Plaza.", url: "https://www.spymuseum.org", letter: "I" },
+    { name: "Jaleo by José Andrés", cat: "Dining & Tapas", phone: "(202) 628-7949", desc: "Celebrated Penn Quarter restaurant serving vibrant Spanish tapas and paellas.", url: "https://www.jaleo.com", letter: "J" },
+    { name: "Kennedy Center for the Performing Arts", cat: "Arts & Culture", phone: "(202) 467-4600", desc: "National cultural center hosting world-class ballet, opera, and symphony.", url: "https://www.kennedy-center.org", letter: "K" },
+    { name: "Library of Congress", cat: "Libraries & Research", phone: "(202) 707-5000", desc: "The largest library in the world and research arm of the U.S. Congress.", url: "https://www.loc.gov", letter: "L" },
+    { name: "Martin Luther King Jr. Memorial Library", cat: "Libraries & Community", phone: "(202) 727-0321", desc: "Central D.C. public library featuring modern exhibits and innovation labs.", url: "https://www.dclibrary.org/mlk", letter: "M" },
+    { name: "National Portrait Gallery", cat: "Museums & Galleries", phone: "(202) 633-8300", desc: "Smithsonian museum featuring presidential portraits and American cultural icons.", url: "https://npg.si.edu", letter: "N" },
+    { name: "Old Post Office Tower", cat: "Historic Monuments", phone: "(202) 606-8691", desc: "Panoramic observation deck offering sweeping 360-degree views of Washington.", url: "https://www.nps.gov/pohe", letter: "O" },
+    { name: "Phillips Collection", cat: "Museums & Art", phone: "(202) 387-2151", desc: "America's first museum of modern art located in a stately Dupont Circle mansion.", url: "https://www.phillipscollection.org", letter: "P" },
+    { name: "Q Custom Jeweler", cat: "Shopping & Luxury", phone: "(703) 548-5509", desc: "Custom fine jewelry design and diamond specialists in the capital region.", url: "https://www.qcustomjeweler.com", letter: "Q" },
+    { name: "Ronald Reagan Building and International Trade Center", cat: "Business & Events", phone: "(202) 312-1300", desc: "Major federal building and premier international conference center.", url: "https://itcdc.com", letter: "R" },
+    { name: "Smithsonian National Museum of Natural History", cat: "Museums & Science", phone: "(202) 633-1000", desc: "Iconic museum housing the Hope Diamond and vast natural science exhibits.", url: "https://naturalhistory.si.edu", letter: "S" },
+    { name: "The Anthem", cat: "Entertainment & Music", phone: "(202) 888-0020", desc: "Superb waterfront music hall and concert venue at The Wharf.", url: "https://www.theanthemdc.com", letter: "T" },
+    { name: "Union Station", cat: "Transportation & Retail", phone: "(202) 289-1908", desc: "Historic transportation terminal, shopping center, and national transit hub.", url: "https://www.unionstationdc.com", letter: "U" },
+    { name: "Vivid Maps & Tours", cat: "Tourism & Exploration", phone: "(202) 555-0199", desc: "Custom guided capital walking tours and historical itinerary planning.", url: "#", letter: "V" },
+    { name: "Warner Theatre", cat: "Arts & Entertainment", phone: "(202) 783-4000", desc: "Historic downtown venue hosting live concerts, comedy shows, and theater.", url: "https://www.warnertheatredc.com", letter: "W" },
+    { name: "Xcalibre Business Solutions", cat: "Technology & Consulting", phone: "(202) 555-0144", desc: "Enterprise tech consulting and digital strategy advisory services.", url: "#", letter: "X" },
+    { name: "Yellow Restaurant", cat: "Dining & Cafe", phone: "(202) 555-0177", desc: "Acclaimed Levantine cafe and bakery serving fresh pastries and artisanal coffee.", url: "https://www.yellowcafedc.com", letter: "Y" },
+    { name: "Zanzibar on the Waterfront", cat: "Dining & Nightlife", phone: "(202) 554-9100", desc: "Scenic waterfront dining and nightlife lounge overlooking the Anacostia River.", url: "#", letter: "Z" }
+  ];
 
-  const azFilter = document.getElementById('azFilter');
-  const directoryGrid = document.getElementById('directoryGrid');
+  let currentLetterFilter = 'A';
 
-  Object.keys(directoryData).forEach((letter, index) => {
-    const btn = document.createElement('div');
-    btn.className = `az-letter ${index === 0 ? 'active' : ''}`;
-    btn.textContent = letter;
-    btn.onclick = () => {
-      document.querySelectorAll('.az-letter').forEach(l => l.classList.remove('active'));
-      btn.classList.add('active');
-      renderDirectory(letter);
-    };
-    azFilter.appendChild(btn);
-  });
-
-  function renderDirectory(letter) {
-    directoryGrid.innerHTML = '';
-    const items = directoryData[letter] || [{ name: 'Coming Soon', icon: '⏳', phone: '(202) 555-0000', desc: 'Listings for this letter are currently expanding.', link: '#' }];
+  function initAZFilter() {
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+    const filterContainer = document.getElementById('azFilter');
     
-    items.forEach(item => {
-      const card = document.createElement('div');
-      card.className = 'directory-card';
-      card.innerHTML = `
-        <div class="directory-img">${item.icon}</div>
-        <div class="directory-content">
-          <div>
-            <div class="directory-title">${item.name}</div>
-            <div class="directory-meta">📞 ${item.phone}</div>
-            <div class="directory-desc">${item.desc}</div>
-          </div>
-          <a href="${item.link}" class="directory-btn" onclick="alert('Opening official website for ${item.name}...'); return false;">🌐 Visit Official Website ↗</a>
-        </div>
-      `;
-      directoryGrid.appendChild(card);
-    });
+    filterContainer.innerHTML = alphabet.map(letter => `
+      <div class="az-letter ${letter === currentLetterFilter ? 'active' : ''}" onclick="filterDirectory('${letter}')">${letter}</div>
+    `).join('');
+
+    renderDirectory();
   }
 
-  renderDirectory('A');
-</script>
+  function filterDirectory(letter) {
+    currentLetterFilter = letter;
+    document.querySelectorAll('.az-letter').forEach(el => {
+      el.classList.toggle('active', el.textContent === letter);
+    });
+    renderDirectory();
+  }
 
+  function renderDirectory() {
+    const filtered = directoryData.filter(d => d.letter === currentLetterFilter);
+    const grid = document.getElementById('directoryGrid');
+
+    if(filtered.length === 0) {
+      grid.innerHTML = `<div style="grid-column: 1/-1; text-align:center; color:var(--muted); padding:30px;">No business listings found for letter "${currentLetterFilter}".</div>`;
+      return;
+    }
+
+    grid.innerHTML = filtered.map(item => `
+      <div class="directory-card">
+        <div class="directory-img">🏛️</div>
+        <div class="directory-content">
+          <div>
+            <div class="directory-meta"><span>📁</span> ${item.cat}</div>
+            <div class="directory-title">${item.name}</div>
+            <div class="directory-desc">${item.desc}</div>
+            <div style="font-size:0.75rem;color:var(--gold);margin-bottom:10px;">📞 ${item.phone}</div>
+          </div>
+          <a href="${item.url}" class="directory-btn" target="_blank">Visit Directory Site ↗</a>
+        </div>
+      </div>
+    `).join('');
+  }
+  initAZFilter();
+
+  // ── ADMIN VISITOR LOG MODAL ──
+  function openAdminModal() {
+    document.getElementById('adminModal').style.display = 'grid';
+    renderVisitorLog();
+  }
+
+  function renderVisitorLog() {
+    const sampleLogs = [
+      { date: "09/16/2026", day: "Wednesday", time: "08:02:14 AM", city: "Washington", state: "D.C.", ip: "192.168.1.45" },
+      { date: "09/15/2026", day: "Tuesday", time: "04:15:30 PM", city: "Arlington", state: "VA", ip: "172.56.21.89" },
+      { date: "09/15/2026", day: "Tuesday", time: "11:22:05 AM", city: "Bethesda", state: "MD", ip: "104.28.14.22" },
+      { date: "09/14/2026", day: "Monday", time: "09:40:12 PM", city: "Alexandria", state: "VA", ip: "68.192.44.12" },
+      { date: "09/13/2026", day: "Sunday", time: "02:11:55 PM", city: "Fairfax", state: "VA", ip: "24.180.91.5" }
+    ];
+
+    document.getElementById('visitorLogBody').innerHTML = sampleLogs.map(l => `
+      <tr>
+        <td>${l.date}</td>
+        <td>${l.day}</td>
+        <td>${l.time}</td>
+        <td>${l.city}</td>
+        <td>${l.state}</td>
+        <td style="color:var(--gold);">${l.ip}</td>
+      </tr>
+    `).join('');
+  }
+</script>
 </body>
 </html>
